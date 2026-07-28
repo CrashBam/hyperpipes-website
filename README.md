@@ -1,6 +1,6 @@
-# Hyper Pipes — website
+# HyperPipes — website
 
-The public home page for **Hyper Pipes**. Plain HTML, CSS and a little JavaScript —
+The public home page for **HyperPipes**. Plain HTML, CSS and a little JavaScript —
 no build step, no framework, no npm. Open `index.html` in a browser and what you
 see is exactly what goes live.
 
