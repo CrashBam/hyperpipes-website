@@ -496,6 +496,81 @@ section { position: relative; padding: 96px 0; }
   color: var(--muted);
 }
 
+/* --- "coming soon" panel (online multiplayer) ---------------------------- */
+
+.ribbon-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 54px 48px 44px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 85% 0%, rgba(164, 77, 255, .16), transparent 50%),
+    linear-gradient(160deg, var(--panel), var(--navy));
+}
+
+/* diagonal flash across the top-right corner */
+.ribbon {
+  position: absolute;
+  top: 30px;
+  right: -66px;
+  width: 250px;
+  padding: 8px 0;
+  transform: rotate(45deg);
+  background: var(--neon);
+  color: #05060f;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .45);
+}
+
+.online-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+  margin-bottom: 38px;
+}
+.online-points .k {
+  display: grid;
+  place-items: center;
+  width: 44px; height: 44px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 240, 255, .35);
+  background: rgba(0, 240, 255, .08);
+  font-family: "Orbitron", sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--cyan);
+}
+.online-points h3 { font-size: 15px; text-transform: uppercase; margin-bottom: 8px; }
+.online-points p { margin: 0; color: var(--muted); font-size: 15px; }
+
+.ribbon-panel .status {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14.5px;
+}
+.ribbon-panel .status b { color: var(--text); font-weight: 600; }
+.ribbon-panel .status .pulse {
+  flex: none;
+  width: 9px; height: 9px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+  animation: blip 2.4s ease-in-out infinite;
+}
+
 /* --- bug report band ----------------------------------------------------- */
 
 .band {
@@ -553,6 +628,8 @@ footer a:hover { color: var(--cyan); }
 @media (max-width: 900px) {
   .play-wrap { grid-template-columns: 1fr; gap: 40px; }
   .band { grid-template-columns: 1fr; padding: 40px 28px; }
+  .ribbon-panel { padding: 44px 26px 36px; }
+  .ribbon { top: 22px; right: -72px; width: 230px; font-size: 11px; }
   .nav { gap: 18px; }
   .nav a:not(.btn) { display: none; }
   section { padding: 72px 0; }
