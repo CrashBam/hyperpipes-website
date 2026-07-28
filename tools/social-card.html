@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- Source for assets/img/social-card.png (the 1200x630 image link previews use).
+     Re-render it after editing with:
+       tools/render-card.sh
+     which screenshots this file headlessly in Chrome. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: "Orbitron"; src: url("../assets/fonts/Orbitron.ttf"); font-weight: 400 900; }
+  @font-face { font-family: "Exo2";     src: url("../assets/fonts/Exo2.ttf");     font-weight: 300 700; }
+
+  * { margin: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; background: #05060f; }
+
+  .card {
+    position: relative;
+    width: 1200px; height: 630px;
+    display: grid; place-content: center; justify-items: center;
+    text-align: center;
+    font-family: "Exo2", sans-serif;
+    color: #e6ebff;
+  }
+  .art { position: absolute; inset: 0; }
+  .art::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 44%, transparent 0%, rgba(5,6,15,.6) 52%, #05060f 86%);
+  }
+  .inner { position: relative; z-index: 1; }
+
+  h1 {
+    font-family: "Orbitron", sans-serif;
+    font-size: 132px; font-weight: 900;
+    letter-spacing: .02em; text-transform: uppercase; line-height: 1;
+    background: linear-gradient(100deg, #00f0ff, #a44dff 55%, #ff2e88);
+    -webkit-background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 40px rgba(0,240,255,.3));
+  }
+  .tag {
+    font-family: "Orbitron", sans-serif;
+    font-size: 25px; letter-spacing: .3em; text-transform: uppercase;
+    margin-top: 20px; opacity: .9;
+  }
+  .foot {
+    position: absolute; z-index: 1; bottom: 42px; left: 0; right: 0;
+    font-family: "Orbitron", sans-serif;
+    font-size: 15px; letter-spacing: .26em; text-transform: uppercase;
+    color: #8f98c4; text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="art">
+    <svg viewBox="0 0 1200 630" width="1200" height="630" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="n" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#00f0ff"/><stop offset="50%" stop-color="#a44dff"/>
+          <stop offset="100%" stop-color="#ff2e88"/>
+        </linearGradient>
+        <radialGradient id="c" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#7fe9ff" stop-opacity=".45"/>
+          <stop offset="100%" stop-color="#7fe9ff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="600" cy="278" r="300" fill="url(#c)"/>
+      <g fill="none" stroke="url(#n)">
+        <circle cx="600" cy="278" r="70"  stroke-width="2"   opacity=".9"/>
+        <circle cx="600" cy="278" r="132" stroke-width="2.8" opacity=".8"/>
+        <circle cx="600" cy="278" r="212" stroke-width="3.6" opacity=".65"/>
+        <circle cx="600" cy="278" r="312" stroke-width="4.6" opacity=".45"/>
+        <circle cx="600" cy="278" r="432" stroke-width="6"   opacity=".28"/>
+      </g>
+      <g fill="#fff">
+        <circle cx="150" cy="90"  r="2.4" opacity=".8"/>
+        <circle cx="1040" cy="70" r="2"   opacity=".6"/>
+        <circle cx="1120" cy="380" r="2.6" opacity=".7"/>
+        <circle cx="80"  cy="430" r="2"   opacity=".55"/>
+        <circle cx="900" cy="560" r="2.2" opacity=".6"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="inner">
+    <h1>Hyper Pipes</h1>
+    <p class="tag">Race the outside of the pipe</p>
+  </div>
+
+  <p class="foot">A neon anti-gravity racer &middot; CrashBamBoom</p>
+</div>
+</body>
+</html>

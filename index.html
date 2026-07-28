@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Pipes — race the outside of the pipe</title>
+<meta name="description" content="Hyper Pipes is a neon anti-gravity racer where you race around the OUTSIDE of a procedurally generated pipe. Gravity pulls you around the tube — staying on top is the whole game.">
+<meta name="theme-color" content="#05060f">
+
+<!-- link preview cards (Discord, X, Facebook, iMessage) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hyper Pipes">
+<meta property="og:description" content="A neon anti-gravity racer where you ride the OUTSIDE of the pipe. Gravity pulls you around the tube — staying on top is the whole game.">
+<meta property="og:image" content="assets/img/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/icon.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ======================================================== top bar ===== -->
+<header class="topbar" id="topbar">
+  <div class="shell">
+    <a class="brand" href="#top">
+      <img src="assets/img/icon.svg" alt="">
+      <b>Hyper Pipes</b>
+    </a>
+    <nav class="nav">
+      <a href="#features">Features</a>
+      <a href="#play">How it plays</a>
+      <a href="#media">Media</a>
+      <a class="btn" href="https://github.com/CrashBam/hyperpipes-bugs/issues/new/choose" target="_blank" rel="noopener">Report a bug</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================ hero ===== -->
+<section class="hero" id="top">
+  <!-- neon tunnel: concentric rings rushing at the camera, pure CSS/SVG -->
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%"   stop-color="#00f0ff"/>
+          <stop offset="50%"  stop-color="#a44dff"/>
+          <stop offset="100%" stop-color="#ff2e88"/>
+        </linearGradient>
+        <linearGradient id="neonB" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#ff2e88"/>
+          <stop offset="100%" stop-color="#00f0ff"/>
+        </linearGradient>
+        <radialGradient id="glowCore" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#7fe9ff" stop-opacity=".55"/>
+          <stop offset="100%" stop-color="#7fe9ff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <circle cx="600" cy="368" r="300" fill="url(#glowCore)"/>
+
+      <g fill="none" stroke-width="3">
+        <circle class="ring" cx="600" cy="368" r="120" stroke="url(#neon)"/>
+        <circle class="ring" cx="600" cy="368" r="120" stroke="url(#neonB)"/>
+        <circle class="ring" cx="600" cy="368" r="120" stroke="url(#neon)"/>
+        <circle class="ring" cx="600" cy="368" r="120" stroke="url(#neonB)"/>
+        <circle class="ring" cx="600" cy="368" r="120" stroke="url(#neon)"/>
+        <circle class="ring" cx="600" cy="368" r="120" stroke="url(#neonB)"/>
+      </g>
+
+      <g fill="#ffffff">
+        <circle cx="180"  cy="120" r="2"   opacity=".8"/>
+        <circle cx="1010" cy="90"  r="1.6" opacity=".6"/>
+        <circle cx="1120" cy="430" r="2.2" opacity=".7"/>
+        <circle cx="90"   cy="520" r="1.5" opacity=".55"/>
+        <circle cx="880"  cy="660" r="1.9" opacity=".65"/>
+        <circle cx="330"  cy="700" r="1.4" opacity=".5"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-inner shell">
+    <span class="badge"><span class="dot"></span> In development &middot; playable build</span>
+    <h1>Hyper Pipes</h1>
+    <p class="tagline">Race the outside of the pipe</p>
+    <p class="pitch">
+      A neon anti-gravity racer built on one twist: you ride the <em>outside</em> of the
+      tube, not the inside. Gravity drags you around the circumference toward the
+      bottom of the pipe — so holding the top is a balancing act, and swinging
+      around the side is how you pass.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#media">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        See the game
+      </a>
+      <a class="btn" href="#features">What's in it</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- ========================================================== stats ====== -->
+<section class="strip">
+  <div class="shell">
+    <div class="stat"><b>6</b><span>Career tracks</span></div>
+    <div class="stat"><b>3</b><span>Championship cups</span></div>
+    <div class="stat"><b>6</b><span>Race types</span></div>
+    <div class="stat"><b>15</b><span>Upgrade tiers</span></div>
+    <div class="stat"><b>&infin;</b><span>Seeded tracks</span></div>
+  </div>
+</section>
+
+<!-- ======================================================== features ===== -->
+<section id="features">
+  <div class="shell">
+    <p class="eyebrow reveal">The game</p>
+    <h2 class="section-title reveal">Built around one idea</h2>
+    <p class="lede reveal">
+      Every track is a closed loop generated from a seed, and every craft, hazard and
+      shot lives in track space — distance along the loop, angle around the tube.
+      Nothing is hand-placed, so no two seeds race the same.
+    </p>
+
+    <div class="grid">
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <ellipse cx="24" cy="24" rx="19" ry="10"/>
+          <ellipse cx="24" cy="24" rx="10" ry="19"/>
+          <circle cx="24" cy="5.5" r="3" fill="currentColor" stroke="none"/>
+        </svg>
+        <h3>Outside-the-pipe physics</h3>
+        <p>Gravity pulls you around the tube, not down a track. Lean into it, ride the
+           shoulder, or lose the line and slide off the top of the world.</p>
+      </article>
+
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 34c8-22 32 8 40-16"/>
+          <circle cx="4" cy="34" r="3"/><circle cx="44" cy="18" r="3"/>
+          <path d="M14 40h20" opacity=".5"/>
+        </svg>
+        <h3>Procedural tracks</h3>
+        <p>Loops are sampled from a curve with parallel transport, so the seam is
+           invisible and the surface stays perfectly smooth. Reroll a seed, get a new race.</p>
+      </article>
+
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 8h20v10a10 10 0 0 1-20 0z"/>
+          <path d="M14 11H8v4a6 6 0 0 0 6 6M34 11h6v4a6 6 0 0 1-6 6"/>
+          <path d="M20 28h8v6h-8zM15 40h18"/>
+        </svg>
+        <h3>Career &amp; championships</h3>
+        <p>Race for purses, bank the money, and run three cups back to back with points
+           carrying over, live standings and a trophy ceremony on the podium.</p>
+      </article>
+
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 6v12L9 36a5 5 0 0 0 4 8h22a5 5 0 0 0 4-8L28 18V6"/>
+          <path d="M17 6h14M15 30h18"/>
+        </svg>
+        <h3>Race Lab</h3>
+        <p>Build your own race: pick a theme, roll seeds with a live preview, choose a
+           race type and intensity — then save the ones worth keeping.</p>
+      </article>
+
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="6"/>
+          <path d="M24 4v8M24 36v8M4 24h8M36 24h8"/>
+        </svg>
+        <h3>Weapons &amp; hazards</h3>
+        <p>Lock a target and fire, grab a shield, or set off a shock wave that surges both
+           ways down the pipe. Mines, walls, slow zones and rotating gates fight back.</p>
+      </article>
+
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="14" width="40" height="20" rx="9"/>
+          <path d="M13 20v8M9 24h8"/><circle cx="33" cy="21" r="2.2" fill="currentColor" stroke="none"/>
+          <circle cx="38" cy="27" r="2.2" fill="currentColor" stroke="none"/>
+        </svg>
+        <h3>Plays your way</h3>
+        <p>Xbox, PlayStation and MFi pads supported natively with rumble, every key
+           rebindable, colour-blind palettes, and a one-press screenshot key.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== how it plays ==== -->
+<section class="play" id="play">
+  <div class="shell">
+    <p class="eyebrow reveal">How it plays</p>
+    <h2 class="section-title reveal">Hold the line, or take the long way round</h2>
+
+    <div class="play-wrap">
+      <ol class="steps reveal">
+        <li>
+          <span class="num">1</span>
+          <div>
+            <h3>Gravity goes sideways</h3>
+            <p>You sit on the outer skin of the tube. Gravity pulls you around the
+               circumference toward the world's down side — let go and you drift off the crown.</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">2</span>
+          <div>
+            <h3>Steering is your balance</h3>
+            <p>Steering swings you around the pipe rather than left and right. Fight the pull
+               to hold the fast line at the top, or ride around the side to slip past a rival.</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">3</span>
+          <div>
+            <h3>The meter is always filling</h3>
+            <p>Boost recharges on its own — spend it when it reads ready. Draft off the racer
+               ahead, grab a pickup, and cash the purse for upgrades in the garage.</p>
+          </div>
+        </li>
+      </ol>
+
+      <figure class="diagram reveal">
+        <svg viewBox="0 0 300 300" role="img" aria-label="Cross-section of the pipe: the craft rides the outer surface while gravity pulls it around the tube.">
+          <defs>
+            <linearGradient id="tube" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#00f0ff" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#a44dff" stop-opacity=".9"/>
+            </linearGradient>
+            <radialGradient id="thrust" cx="50%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#e6fbff" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#4de0ff" stop-opacity="0"/>
+            </radialGradient>
+            <marker id="ar" viewBox="0 0 12 12" refX="10" refY="6"
+                    markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0 0l12 6-12 6z" fill="#ff2e88"/>
+            </marker>
+          </defs>
+
+          <!-- the pipe, seen end-on -->
+          <circle cx="150" cy="150" r="86" fill="none" stroke="url(#tube)" stroke-width="18" opacity=".16"/>
+          <circle cx="150" cy="150" r="86" fill="none" stroke="url(#tube)" stroke-width="2.6"/>
+          <circle cx="150" cy="150" r="63" fill="none" stroke="#39428a" stroke-width="1" stroke-dasharray="4 8"/>
+
+          <!-- the craft, seen head-on, sitting on the outer surface -->
+          <g class="orbit-ship">
+            <ellipse cx="150" cy="76" rx="18" ry="8" fill="url(#thrust)"/>
+            <path d="M150 42l17 24h-9l-2 6h-12l-2-6h-9z" fill="#eaf9ff"/>
+            <circle cx="150" cy="58" r="3" fill="#0a5a7a"/>
+          </g>
+
+          <!-- gravity: pulling AROUND the circumference, not straight down -->
+          <g stroke="#ff2e88" stroke-width="2.4" fill="none" stroke-linecap="round">
+            <path d="M223 77A104 104 0 0 1 248 186" marker-end="url(#ar)"/>
+            <path d="M77 77A104 104 0 0 0 52 186" marker-end="url(#ar)"/>
+          </g>
+
+          <text x="150" y="264" text-anchor="middle" fill="#ff6aa8"
+                font-family="Orbitron, sans-serif" font-size="10" letter-spacing="3">GRAVITY</text>
+          <text x="150" y="30" text-anchor="middle" fill="#6ff2ff"
+                font-family="Orbitron, sans-serif" font-size="10" letter-spacing="3">FAST LINE</text>
+        </svg>
+        <figcaption>You race here — on the outside</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================== media ===== -->
+<section id="media">
+  <div class="shell">
+    <p class="eyebrow reveal">Media</p>
+    <h2 class="section-title reveal">Screenshots</h2>
+    <p class="lede reveal" id="media-lede">
+      Straight from the game — no touch-ups.
+    </p>
+    <div class="shots" id="shots"></div>
+  </div>
+</section>
+
+<!-- ============================================================ bugs ===== -->
+<section id="bugs">
+  <div class="shell">
+    <div class="band reveal">
+      <div>
+        <h2>Found a bug? Tell me.</h2>
+        <p>
+          Hyper Pipes is a one-person project and every report genuinely helps. Bug
+          reports and ideas live on GitHub — pick a template, fill in what happened,
+          drop in a screenshot if you have one. You'll need a free GitHub account.
+        </p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://github.com/CrashBam/hyperpipes-bugs/issues/new/choose" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+          Report a bug
+        </a>
+        <a class="btn" href="https://github.com/CrashBam/hyperpipes-bugs/issues" target="_blank" rel="noopener">See known issues</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================== footer ===== -->
+<footer>
+  <div class="shell">
+    <p>&copy; <span id="year">2026</span> CrashBamBoom &middot; Hyper Pipes &middot; Made with Godot</p>
+    <nav class="fnav">
+      <a href="#features">Features</a>
+      <a href="#play">How it plays</a>
+      <a href="#media">Media</a>
+      <a href="https://github.com/CrashBam/hyperpipes-bugs/issues" target="_blank" rel="noopener">Bug tracker</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+/* ---------------------------------------------------------------------------
+   SCREENSHOTS — the only list you need to edit.
+
+   1. Press F2 in the game (or R3 on a pad). Shots land in Pictures/HyperPipes.
+   2. Copy the PNGs into this site's  screenshots/  folder.
+   3. Add a line below for each one, then commit and push.
+
+   Until this list has entries the gallery draws stylised placeholder plates,
+   so the page never looks broken.
+--------------------------------------------------------------------------- */
+const SHOTS = [
+  // { file: "screenshots/race-01.png", caption: "Neon Run — final lap" },
+  // { file: "screenshots/garage.png",  caption: "The garage" },
+];
+
+const PLACEHOLDERS = [
+  { caption: "Deep space",   a: "#00f0ff", b: "#a44dff" },
+  { caption: "Neon city",    a: "#a44dff", b: "#ff2e88" },
+  { caption: "The garage",   a: "#ff2e88", b: "#00f0ff" },
+];
+
+/* a little procedural "key art" plate so empty slots still look designed */
+function plate(a, b, i) {
+  const rings = [34, 60, 94, 136, 186, 244]
+    .map((r, n) => `<circle cx="240" cy="128" r="${r}" fill="none"
+        stroke="url(#g${i})" stroke-width="${1.2 + n * 0.8}" opacity="${0.95 - n * 0.13}"/>`)
+    .join("");
+  return `<svg class="plate" viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="g${i}" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="${a}"/><stop offset="100%" stop-color="${b}"/>
+      </linearGradient>
+      <radialGradient id="v${i}" cx="50%" cy="47%" r="62%">
+        <stop offset="0%" stop-color="#1b1f4a"/><stop offset="100%" stop-color="#05060f"/>
+      </radialGradient>
+      <radialGradient id="c${i}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="${a}" stop-opacity=".45"/>
+        <stop offset="100%" stop-color="${a}" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="480" height="270" fill="url(#v${i})"/>
+    <circle cx="240" cy="128" r="150" fill="url(#c${i})"/>
+    ${rings}
+  </svg>`;
+}
+
+(function buildGallery() {
+  const wrap = document.getElementById("shots");
+  if (!wrap) return;
+
+  if (SHOTS.length) {
+    wrap.innerHTML = SHOTS.map(s => `
+      <figure class="shot">
+        <img src="${s.file}" alt="${s.caption}" loading="lazy">
+        ${s.caption ? `<figcaption>${s.caption}</figcaption>` : ""}
+      </figure>`).join("");
+  } else {
+    document.getElementById("media-lede").textContent =
+      "Fresh captures are on the way — here's the look in the meantime.";
+    wrap.innerHTML = PLACEHOLDERS.map((p, i) => `
+      <figure class="shot empty">
+        ${plate(p.a, p.b, i)}
+        <span class="chip">Coming soon</span>
+        <figcaption>${p.caption}</figcaption>
+      </figure>`).join("");
+  }
+})();
+
+/* sticky top bar */
+const bar = document.getElementById("topbar");
+const onScroll = () => bar.classList.toggle("stuck", window.scrollY > 24);
+addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
+/* fade sections in as they arrive */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  });
+}, { rootMargin: "0px 0px -12% 0px" });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
