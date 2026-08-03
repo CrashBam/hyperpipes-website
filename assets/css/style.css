@@ -653,3 +653,79 @@ footer a:hover { color: var(--cyan); }
     transition-duration: .001ms !important;
   }
 }
+
+/* --- inner pages (manual index, privacy) --------------------------------- */
+/* These have no hero, so they need their own clearance under the fixed top bar
+   — otherwise the first heading sits behind it. */
+
+.subpage {
+  padding: 150px 0 90px;
+  min-height: 70vh;
+  background: linear-gradient(180deg, var(--navy), var(--void) 40%);
+}
+
+.shell-narrow { width: min(760px, 92vw); }
+
+.crumb {
+  font-family: "Orbitron", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+.crumb a { color: var(--cyan); text-decoration: none; }
+.crumb a:hover { text-decoration: underline; }
+
+.updated {
+  color: var(--muted);
+  font-size: 14px;
+  margin: -6px 0 34px;
+}
+
+/* Buttons sit in a row at the foot of each manual card. The PDF is the quieter
+   of the two — reading online is the one we want people to take. */
+.doc-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 22px 0 0;
+}
+.doc-links .btn { padding: 11px 20px; font-size: 12px; }
+.btn-quiet { color: var(--muted); }
+
+.foot-note {
+  margin: 40px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+.foot-note a { color: var(--cyan); }
+
+/* --- long-form copy (privacy) -------------------------------------------- */
+
+.prose h2 {
+  font-size: 19px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 44px 0 12px;
+  color: var(--text);
+}
+.prose p, .prose li { color: var(--muted); font-size: 16.5px; }
+.prose a { color: var(--cyan); }
+.prose ul { padding-left: 22px; margin: 12px 0; }
+.prose li { margin-bottom: 9px; }
+.prose b { color: var(--text); }
+
+/* The summary box, so nobody has to read the whole thing to get the answer. */
+.callout {
+  border: 1px solid rgba(0, 240, 255, 0.28);
+  border-radius: var(--r);
+  background: linear-gradient(160deg, var(--panel), var(--navy));
+  padding: 24px 26px;
+  margin: 0 0 10px;
+}
+.callout p { margin: 0; }
+
+@media (max-width: 900px) {
+  .subpage { padding: 120px 0 70px; }
+}

@@ -1,0 +1,280 @@
+/* HYPER PIPES — league handbook.
+   Shared by manual.html (the full book) and quickref.html (the card).
+   Rendered to PDF with headless Chrome; see manual/BUILD.txt. */
+
+@font-face {
+	font-family: "Orbitron";
+	src: url("assets/Orbitron.ttf") format("truetype");
+	font-weight: 400 900;
+}
+@font-face {
+	font-family: "Exo2";
+	src: url("assets/Exo2.ttf") format("truetype");
+	font-weight: 100 900;
+}
+
+@page {
+	size: A4;
+	margin: 16mm 15mm 14mm 15mm;
+}
+
+:root {
+	--ink: #0d1117;
+	--paper: #ffffff;
+	--accent: #0a6ea8;      /* the game's cyan, darkened until it survives print */
+	--accent-soft: #e6f2f8;
+	--rule: #c3ced6;
+	--dim: #5d6a74;
+	--gold: #9a7413;
+	--warn: #a8412a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+	font-family: "Exo2", "Helvetica Neue", Arial, sans-serif;
+	font-size: 9.6pt;
+	line-height: 1.5;
+	color: var(--ink);
+	background: var(--paper);
+	margin: 0;
+	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
+}
+
+/* --- page scaffolding ---------------------------------------------------- */
+
+.page { page-break-after: always; }
+.page:last-child { page-break-after: auto; }
+
+h1, h2, h3, h4, .stamp, .folio, th {
+	font-family: "Orbitron", "Helvetica Neue", Arial, sans-serif;
+	text-transform: uppercase;
+}
+
+h2 {
+	font-size: 16pt;
+	letter-spacing: 0.04em;
+	margin: 0 0 2mm;
+	color: var(--ink);
+}
+h2 .num {
+	color: var(--accent);
+	margin-right: 3mm;
+}
+h3 {
+	font-size: 10pt;
+	letter-spacing: 0.06em;
+	margin: 6mm 0 1.5mm;
+	color: var(--accent);
+	border-bottom: 1px solid var(--rule);
+	padding-bottom: 1mm;
+}
+h4 {
+	font-size: 8.4pt;
+	letter-spacing: 0.06em;
+	margin: 4mm 0 1mm;
+}
+
+p { margin: 0 0 2.6mm; }
+.lede {
+	font-size: 10.6pt;
+	line-height: 1.45;
+	color: var(--dim);
+	margin-bottom: 4mm;
+}
+.tight p { margin-bottom: 1.6mm; }
+
+/* A running strip under each chapter title. */
+.chapter-rule {
+	height: 2px;
+	background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 22%, var(--rule) 22%, var(--rule) 100%);
+	margin: 0 0 5mm;
+}
+
+.cols { column-count: 2; column-gap: 8mm; }
+.cols h3:first-child { margin-top: 0; }
+
+/* --- tables -------------------------------------------------------------- */
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 0 0 3mm;
+	font-size: 9pt;
+}
+th {
+	font-size: 7.4pt;
+	letter-spacing: 0.08em;
+	text-align: left;
+	color: var(--dim);
+	border-bottom: 1.5px solid var(--ink);
+	padding: 0 2mm 1mm 0;
+}
+td {
+	padding: 1.3mm 2mm 1.3mm 0;
+	border-bottom: 1px solid var(--rule);
+	vertical-align: top;
+}
+td.key {
+	font-family: "Orbitron", sans-serif;
+	font-size: 7.6pt;
+	white-space: nowrap;
+}
+/* A header sits over its own column. Numeric columns are right-aligned, so
+   their headers have to be too — with only td.num right-aligned, every heading
+   on a figures table drifted left of the figures it was labelling, and the page
+   read as though the columns had slipped. */
+td.num, th.num { text-align: right; white-space: nowrap; }
+tr.total td { border-bottom: none; }
+
+/* --- callouts ------------------------------------------------------------ */
+
+.note {
+	background: var(--accent-soft);
+	border-left: 3px solid var(--accent);
+	padding: 2.5mm 3mm;
+	margin: 0 0 3mm;
+	font-size: 8.8pt;
+}
+.note .tag {
+	font-family: "Orbitron", sans-serif;
+	font-size: 7pt;
+	letter-spacing: 0.1em;
+	color: var(--accent);
+	display: block;
+	margin-bottom: 0.8mm;
+}
+.note.warn { background: #fbeeea; border-left-color: var(--warn); }
+.note.warn .tag { color: var(--warn); }
+
+.stamp {
+	display: inline-block;
+	border: 1.5px solid var(--accent);
+	color: var(--accent);
+	font-size: 6.8pt;
+	letter-spacing: 0.14em;
+	padding: 0.8mm 2mm;
+	border-radius: 2px;
+}
+
+/* --- pickup / item entries ----------------------------------------------- */
+
+.entry { display: flex; gap: 3mm; margin-bottom: 3mm; break-inside: avoid; }
+.glyph {
+	width: 9mm;
+	height: 9mm;
+	flex: 0 0 9mm;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 11pt;
+	color: #fff;
+	line-height: 1;
+}
+.entry .body { flex: 1; }
+.entry .body strong {
+	font-family: "Orbitron", sans-serif;
+	font-size: 8.6pt;
+	letter-spacing: 0.04em;
+	display: block;
+}
+.entry .body span { display: block; }
+
+/* --- diagrams ------------------------------------------------------------ */
+
+figure { margin: 0 0 4mm; break-inside: avoid; }
+figcaption {
+	font-size: 7.6pt;
+	color: var(--dim);
+	margin-top: 1.5mm;
+	padding-left: 1mm;
+	border-left: 2px solid var(--rule);
+}
+svg { display: block; width: 100%; height: auto; }
+
+/* --- cover --------------------------------------------------------------- */
+
+.cover {
+	height: 250mm;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.cover-art { text-align: center; padding-top: 22mm; }
+.cover-art img { width: 116mm; }
+.cover h1 {
+	font-size: 13pt;
+	letter-spacing: 0.42em;
+	margin: 7mm 0 0;
+	color: var(--accent);
+}
+.cover .sub {
+	font-size: 8.6pt;
+	letter-spacing: 0.2em;
+	color: var(--dim);
+	margin-top: 2mm;
+	font-family: "Orbitron", sans-serif;
+	text-transform: uppercase;
+}
+.cover-foot {
+	border-top: 2px solid var(--ink);
+	padding-top: 3mm;
+	display: flex;
+	justify-content: space-between;
+	font-size: 7.6pt;
+	letter-spacing: 0.1em;
+	font-family: "Orbitron", sans-serif;
+	text-transform: uppercase;
+	color: var(--dim);
+}
+
+/* --- contents ------------------------------------------------------------ */
+
+.toc { list-style: none; padding: 0; margin: 0; column-count: 2; column-gap: 10mm; }
+.toc li {
+	display: flex;
+	align-items: baseline;
+	gap: 2mm;
+	padding: 1.4mm 0;
+	border-bottom: 1px solid var(--rule);
+	break-inside: avoid;
+}
+.toc .n {
+	font-family: "Orbitron", sans-serif;
+	font-size: 7.4pt;
+	color: var(--accent);
+	width: 6mm;
+	flex: 0 0 6mm;
+}
+.toc .t { flex: 1; }
+.toc .p { font-family: "Orbitron", sans-serif; font-size: 7.4pt; color: var(--dim); }
+
+/* --- quick reference card ------------------------------------------------ */
+
+.qr-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	border-bottom: 2px solid var(--ink);
+	padding-bottom: 2mm;
+	margin-bottom: 4mm;
+}
+.qr-head h1 { font-size: 15pt; letter-spacing: 0.16em; margin: 0; }
+.qr-head .sub { font-family: "Orbitron", sans-serif; font-size: 7.2pt; letter-spacing: 0.12em; color: var(--dim); }
+.qr-grid { column-count: 2; column-gap: 8mm; }
+.qr-grid > section { break-inside: avoid; margin-bottom: 4mm; }
+.qr-grid table { font-size: 8.2pt; }
+.qr-grid td { padding: 0.9mm 2mm 0.9mm 0; }
+
+/* The fixed analogue note beside an action name in the binding tables — the
+   left stick, which is always live and can never be rebound. Dim, because it
+   is context rather than a binding you could go and change. */
+.fixed {
+	font-family: "Orbitron", sans-serif;
+	font-size: 6.6pt;
+	letter-spacing: 0.06em;
+	color: #8a949c;
+	white-space: nowrap;
+}

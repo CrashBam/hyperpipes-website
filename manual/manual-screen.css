@@ -1,0 +1,89 @@
+/* HYPERPIPES — screen-only layer over the printed manual.
+   =========================================================================
+   manual.css is PRINT css: A4 pages, 16mm margins, 9.6pt type on white paper.
+   That is correct for the PDFs and unreadable on a phone, where it renders as
+   a full-bleed white wall of 9.6pt text.
+
+   Everything here is inside @media screen, so it cannot reach the PDF render.
+   headless Chrome prints with the print stylesheet only, which is why this file
+   is safe to sit alongside the one the build depends on.
+
+   This file is website-owned. tools/sync-manual.sh overwrites the copied
+   manual.html / manual.css from the game repo but never touches this. */
+
+@media screen {
+
+  /* Dark surround, so a page arriving from the neon site is not a flashbang.
+     The pages themselves stay white — they are documents, and inverting a
+     document whose accent colours were chosen to survive print looks wrong. */
+  body {
+    background: #05060f;
+    padding: 0 0 4rem;
+  }
+
+  /* Each .page becomes a floating sheet rather than a print page. The A4 shape
+     is dropped on purpose: honouring it on screen means horizontal scrolling on
+     every phone, and nothing on screen needs to break where the paper breaks. */
+  .page {
+    background: #fff;
+    max-width: 46rem;
+    margin: 1.5rem auto;
+    padding: clamp(1.5rem, 5vw, 3.5rem);
+    border-radius: 10px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .55);
+  }
+
+  /* 9.6pt is a print size. On screen it wants to be ~16px with room to breathe. */
+  body { font-size: 16px; line-height: 1.7; }
+
+  /* Folios and print furniture are meaningless without pages to number. */
+  .folio { display: none; }
+
+  /* Wide tables scroll inside themselves instead of forcing the whole sheet
+     sideways — the controls tables are the widest thing in the book. */
+  table { display: block; overflow-x: auto; max-width: 100%; }
+
+  img { max-width: 100%; height: auto; }
+
+  /* The cover art is sized in mm for A4 (116mm) and overflows a phone. */
+  .cover-art img { width: 100%; max-width: 116mm; }
+
+  /* Two-column print layouts (.cols, .toc, .qr-grid) go single-column below
+     tablet width. These columns are sized for a 180mm A4 text block; splitting a
+     390px phone in two leaves ~170px a column, which is about four words a line
+     for the body copy and unreadable for the control tables.
+
+     Note this is a readability call, not an overflow fix — the pages do not
+     overflow at any width (scrollWidth == clientWidth). Verified down to 500px,
+     which is as narrow as headless Chrome's window will go. */
+  @media (max-width: 720px) {
+    .cols, .toc, .qr-grid { column-count: 1; }
+  }
+
+  /* --- the nav bar sync-manual.sh injects after <body> ------------------- */
+  .webnav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    padding: .7rem clamp(1rem, 4vw, 2rem);
+    background: rgba(5, 6, 15, .92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(120, 140, 255, .16);
+    font-family: "Orbitron", "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .webnav a { color: #8f98c4; text-decoration: none; }
+  .webnav a:hover { color: #00f0ff; }
+  .webnav a:first-child { color: #e6ebff; }
+}
+
+/* Belt and braces: if this file is ever pulled into a print context by mistake,
+   the injected nav bar must not print. */
+@media print {
+  .webnav { display: none !important; }
+}

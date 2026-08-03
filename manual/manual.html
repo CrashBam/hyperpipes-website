@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyper Pipes — League Handbook</title>
+<link rel="stylesheet" href="manual.css">
+<link rel="stylesheet" href="manual-screen.css">
+</head>
+<body>
+<nav class="webnav"><a href="./">← All manuals</a><a href="../">HyperPipes home</a></nav>
+
+<!-- ============================== COVER ============================== -->
+<section class="page cover">
+	<div class="cover-art">
+		<img src="assets/hyperpipes_title_clean.png" alt="Hyper Pipes">
+		<h1>League Handbook</h1>
+		<div class="sub">Circuit regulations &middot; craft &middot; race formats</div>
+	</div>
+	<div class="cover-foot">
+		<span>CrashBamBoom</span>
+		<span>Edition One</span>
+	</div>
+</section>
+
+<!-- ============================== CONTENTS ============================== -->
+<section class="page">
+	<h2>Contents</h2>
+	<div class="chapter-rule"></div>
+
+	<p class="lede">Pipe racing is simple to describe and awkward to do. This
+	handbook covers the awkward part first, then the machinery around it.</p>
+
+	<ol class="toc">
+		<li><span class="n">01</span><span class="t">The circuit</span><span class="p">3</span></li>
+		<li><span class="n">02</span><span class="t">Controls</span><span class="p">5</span></li>
+		<li><span class="n">03</span><span class="t">The readout</span><span class="p">6</span></li>
+		<li><span class="n">04</span><span class="t">Boost</span><span class="p">7</span></li>
+		<li><span class="n">05</span><span class="t">Pickups</span><span class="p">8</span></li>
+		<li><span class="n">06</span><span class="t">Hazards</span><span class="p">10</span></li>
+		<li><span class="n">07</span><span class="t">Race formats</span><span class="p">11</span></li>
+		<li><span class="n">08</span><span class="t">The championship</span><span class="p">12</span></li>
+		<li><span class="n">09</span><span class="t">Cups</span><span class="p">13</span></li>
+		<li><span class="n">10</span><span class="t">Tour</span><span class="p">14</span></li>
+		<li><span class="n">11</span><span class="t">Daily &amp; Race Lab</span><span class="p">15</span></li>
+		<li><span class="n">12</span><span class="t">The garage</span><span class="p">16</span></li>
+		<li><span class="n">13</span><span class="t">Settings &amp; media</span><span class="p">17</span></li>
+		<li><span class="n">14</span><span class="t">Race craft</span><span class="p">18</span></li>
+	</ol>
+
+	<h3>Before your first start</h3>
+	<p>There is a tutorial on the main menu, in the footer. It runs about four
+	minutes, times nothing, and can be left at any point. It begins with the
+	pipe's gravity switched <em>off</em> so you can fly a full circle around the
+	tube and see what you are actually standing on. That ten seconds does more
+	than this chapter will.</p>
+
+	<p>Everything in this handbook applies whether you take it or not.</p>
+
+	<div class="note">
+		<span class="tag">A note on the numbers</span>
+		Times, distances and payouts printed here are the ones the game uses.
+		Where a figure depends on your difficulty setting, both are given.
+	</div>
+</section>
+
+<!-- ============================== 01 CIRCUIT ============================== -->
+<section class="page">
+	<h2><span class="num">01</span>The circuit</h2>
+	<div class="chapter-rule"></div>
+
+	<p class="lede">A pipe circuit is a closed tube suspended across open
+	country. You do not race through it. You race on the outside of it.</p>
+
+	<h3>Pipe discipline</h3>
+	<p>Your craft holds the outer surface of the tube. It is not magnetised and
+	it is not clamped &mdash; it is held there by speed and by you. Whichever
+	face of the pipe happens to be turned toward the ground will try to take you
+	with it, and it does not stop trying.</p>
+
+	<p>The correction is small and constant. Riders who fight it in large
+	movements spend the race sliding between the nine and three o'clock
+	positions and wondering why they are slow. Hold the top, make small
+	inputs, and let the pipe do the rest.</p>
+
+	<figure>
+		<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg">
+			<circle cx="118" cy="100" r="70" fill="#eef3f6" stroke="#0d1117" stroke-width="2"/>
+			<circle cx="118" cy="100" r="2.5" fill="#5d6a74"/>
+			<!-- craft on top -->
+			<path d="M118 19 l8 12 h-16 z" fill="#0a6ea8"/>
+			<!-- top lane arc -->
+			<path d="M82 37 A70 70 0 0 1 154 37" fill="none" stroke="#0a6ea8" stroke-width="3" stroke-linecap="round"/>
+			<!-- clock labels, inside the tube so nothing collides with the rim -->
+			<text x="68" y="103" text-anchor="middle" font-family="Exo2" font-size="8.5" fill="#8a949c">9 o'clock</text>
+			<text x="168" y="103" text-anchor="middle" font-family="Exo2" font-size="8.5" fill="#8a949c">3 o'clock</text>
+			<text x="118" y="146" text-anchor="middle" font-family="Exo2" font-size="8.5" fill="#8a949c">the fall line</text>
+			<!-- gravity arrows, clear of the circle -->
+			<g stroke="#a8412a" stroke-width="1.8" fill="none">
+				<path d="M212 44 v26"/><path d="M208 64 l4 8 l4 -8"/>
+				<path d="M212 92 v26"/><path d="M208 112 l4 8 l4 -8"/>
+			</g>
+			<text x="228" y="56" font-family="Exo2" font-size="10" fill="#a8412a">the pull is always toward</text>
+			<text x="228" y="69" font-family="Exo2" font-size="10" fill="#a8412a">the ground &mdash; never</text>
+			<text x="228" y="82" font-family="Exo2" font-size="10" fill="#a8412a">toward the pipe</text>
+			<text x="228" y="106" font-family="Exo2" font-size="10" fill="#0a6ea8">so the safe lane is simply</text>
+			<text x="228" y="119" font-family="Exo2" font-size="10" fill="#0a6ea8">wherever "up" happens</text>
+			<text x="228" y="132" font-family="Exo2" font-size="10" fill="#0a6ea8">to be right now</text>
+			<text x="118" y="12" text-anchor="middle" font-family="Orbitron" font-size="8" fill="#0a6ea8">TOP LANE</text>
+		</svg>
+		<figcaption>Looking down the tube. The top lane is not a fixed part of
+		the pipe &mdash; it is wherever the pipe currently faces the sky, and it
+		moves as the circuit climbs, banks and turns.</figcaption>
+	</figure>
+
+	<h3>Sliding is not crashing</h3>
+	<p>This catches everyone. In every other racing game, leaving the road ends
+	your lap. Here it does not. Sliding down the side of the pipe costs you time
+	and nothing else, and you can climb back up from anywhere on the
+	circumference &mdash; including from directly underneath.</p>
+
+	<p>Riders who understand this get faster quickly, because they stop braking
+	out of fear. Riders who do not spend the whole race in the top thirty
+	degrees, tense, and slow.</p>
+
+	<div class="note">
+		<span class="tag">Regulation</span>
+		There is no off-track penalty, no reset, and no wall to hit. The pipe is
+		the whole world. What you lose by going around the side, you lose in
+		seconds only.
+	</div>
+</section>
+
+<section class="page">
+	<h3>Going around on purpose</h3>
+	<p>Once holding the top is automatic, the circumference becomes a tool
+	rather than a threat. A craft that drops deliberately onto the inside of a
+	bend takes a shorter line through it. A craft that swings wide around the
+	outside carries more speed out. Neither is free &mdash; you are fighting the
+	pull the whole way &mdash; but both are faster than the timid line for a
+	rider who can hold them.</p>
+
+	<p>This is the technique that separates a finisher from a winner, and it is
+	the only one this handbook will insist on.</p>
+
+	<h3>Reading the circuit</h3>
+	<p>Circuits are built rather than drawn: every one is generated from a seed
+	number, and the same seed always builds the same pipe. Championship circuits
+	have fixed seeds, so the twenty-four races are twenty-four recognisable
+	places, and a lap you learn stays learned.</p>
+
+	<table>
+		<tr><td class="key">Straights</td><td>The top lane barely moves. Take the tightest line you can hold and spend boost here.</td></tr>
+		<tr><td class="key">Bends</td><td>The pipe banks. The top lane slides around the tube under you &mdash; steer with it before it takes you.</td></tr>
+		<tr><td class="key">Climbs &amp; drops</td><td>The horizon lies. What looks like a wall is usually a shallow rise on a pipe that has rolled.</td></tr>
+		<tr><td class="key">Corkscrews</td><td>Later circuits fold the tube through full loops. The top lane rotates continuously. Commit early and keep the input constant.</td></tr>
+	</table>
+
+	<h3>The lap</h3>
+	<p>Races run a set number of laps, shown on the readout. The line is a
+	checkered band across the pipe, and it is visible on the minimap as well, so
+	you know when the last lap is coming before you are told.</p>
+
+	<p>Your best lap and best full race on every championship circuit are kept.
+	So is a ghost &mdash; a silent echo of your quickest run, which will race
+	you next time you visit. It cannot be collided with and it does not score.
+	It is there to be beaten.</p>
+</section>
+
+<!-- ============================== 02 CONTROLS ============================== -->
+<section class="page">
+	<h2><span class="num">02</span>Controls</h2>
+	<div class="chapter-rule"></div>
+
+	<p class="lede">Everything below is the factory binding. All of it can be
+	changed in Settings &rsaquo; Keybindings. Analogue stick and trigger inputs
+	are fixed.</p>
+
+	<h3>Racing</h3>
+	<!-- BEGIN:bindings_racing -->
+<!-- Generated by scripts/_dev/KeybindsExport.cs. Do not edit. -->
+<table>
+<thead><tr><th style="width:28%">Action</th><th style="width:26%">Keyboard</th><th style="width:23%">Xbox</th><th style="width:23%">PlayStation</th></tr></thead>
+<tr><td>Accelerate</td><td class="key">W &middot; UP</td><td class="key">RT</td><td class="key">R2</td></tr>
+<tr><td>Brake</td><td class="key">S &middot; DOWN</td><td class="key">B &middot; LT</td><td class="key">CIRCLE &middot; L2</td></tr>
+<tr><td>Steer Left <span class="fixed">+ Left Stick</span></td><td class="key">A &middot; LEFT</td><td class="key">DPAD ◀</td><td class="key">DPAD ◀</td></tr>
+<tr><td>Steer Right <span class="fixed">+ Left Stick</span></td><td class="key">D &middot; RIGHT</td><td class="key">DPAD ▶</td><td class="key">DPAD ▶</td></tr>
+<tr><td>Boost</td><td class="key">SHIFT</td><td class="key">Y</td><td class="key">TRIANGLE</td></tr>
+<tr><td>Fire</td><td class="key">SPACE</td><td class="key">A &middot; RB</td><td class="key">CROSS &middot; R1</td></tr>
+<tr><td>Use Item</td><td class="key">X</td><td class="key">X</td><td class="key">SQUARE</td></tr>
+<tr><td>Target Next</td><td class="key">E</td><td class="key">LB</td><td class="key">L1</td></tr>
+<tr><td>Target Prev</td><td class="key">Q</td><td class="key">&mdash;</td><td class="key">&mdash;</td></tr>
+<tr><td>Camera View</td><td class="key">C</td><td class="key">L3</td><td class="key">L3</td></tr>
+<tr><td>Pause</td><td class="key">ESCAPE &middot; P</td><td class="key">START</td><td class="key">OPTIONS</td></tr>
+</table>
+<!-- END:bindings_racing -->
+
+	<h3>Capture &amp; radio</h3>
+	<!-- BEGIN:bindings_media -->
+<!-- Generated by scripts/_dev/KeybindsExport.cs. Do not edit. -->
+<table>
+<thead><tr><th style="width:28%">Action</th><th style="width:26%">Keyboard</th><th style="width:23%">Xbox</th><th style="width:23%">PlayStation</th></tr></thead>
+<tr><td>Screenshot</td><td class="key">F2</td><td class="key">R3</td><td class="key">R3</td></tr>
+<tr><td>Hide HUD</td><td class="key">H</td><td class="key">SELECT</td><td class="key">SHARE</td></tr>
+<tr><td>Radio Next</td><td class="key">PERIOD</td><td class="key">DPAD ▲</td><td class="key">DPAD ▲</td></tr>
+<tr><td>Radio Prev</td><td class="key">COMMA</td><td class="key">DPAD ▼</td><td class="key">DPAD ▼</td></tr>
+<tr><td>Music Vol +</td><td class="key">APOSTROPHE</td><td class="key">&mdash;</td><td class="key">&mdash;</td></tr>
+<tr><td>Music Vol −</td><td class="key">SEMICOLON</td><td class="key">&mdash;</td><td class="key">&mdash;</td></tr>
+</table>
+<!-- END:bindings_media -->
+
+	<div class="note">
+		<span class="tag">Controllers</span>
+		Xbox, PlayStation and Apple pads work the moment they are connected, and
+		the game relabels its own prompts to match &mdash; a PlayStation pad is
+		told about Cross and Square, not A and X. Nothing needs configuring.
+	</div>
+
+	<h3>Menus</h3>
+	<table>
+		<thead><tr><th style="width:34%">Action</th><th style="width:33%">Keyboard</th><th style="width:33%">Controller</th></tr></thead>
+		<tr><td>Move</td><td class="key">Arrows</td><td class="key">D-pad / left stick</td></tr>
+		<tr><td>Select</td><td class="key">Enter</td><td class="key">A / Cross</td></tr>
+		<tr><td>Back</td><td class="key">Esc</td><td class="key">B / Circle</td></tr>
+	</table>
+
+	<p>Every screen in the game can be driven end to end on a pad. If you find
+	one that cannot, it is a fault and worth reporting.</p>
+</section>
+
+<!-- ============================== 03 READOUT ============================== -->
+<section class="page">
+	<h2><span class="num">03</span>The readout</h2>
+	<div class="chapter-rule"></div>
+
+	<p class="lede">One bar across the top, one map in the corner. Nothing else
+	moves.</p>
+
+	<figure>
+		<svg viewBox="0 0 420 96" xmlns="http://www.w3.org/2000/svg">
+			<rect x="6" y="24" width="408" height="42" rx="21" fill="#eef3f6" stroke="#0d1117" stroke-width="1.6"/>
+			<g font-family="Orbitron" font-size="6" fill="#5d6a74" text-anchor="middle">
+				<text x="46" y="40">POS</text><text x="106" y="40">LAP</text>
+				<text x="166" y="40">TIME</text><text x="226" y="40">EARNINGS</text>
+				<text x="286" y="40">ITEM</text><text x="336" y="40">AMMO</text>
+				<text x="386" y="40">KM/H</text>
+			</g>
+			<g font-family="Exo2" font-size="11" fill="#0d1117" text-anchor="middle" font-weight="bold">
+				<text x="46" y="56">1st</text><text x="106" y="56">2 / 3</text>
+				<text x="166" y="56">00'42"18</text><text x="226" y="56">$ 1,200</text>
+				<text x="286" y="56">&#9670;</text><text x="336" y="56">5</text>
+				<text x="386" y="56">345</text>
+			</g>
+			<rect x="200" y="60" width="52" height="3" rx="1.5" fill="#0a6ea8"/>
+			<text x="226" y="76" font-family="Orbitron" font-size="5.5" fill="#0a6ea8" text-anchor="middle">BOOST METER</text>
+			<g stroke="#5d6a74" stroke-width="0.8" fill="none">
+				<path d="M46 22 v-8 h30"/><path d="M386 22 v-8 h-30"/>
+			</g>
+			<text x="80" y="12" font-family="Exo2" font-size="8" fill="#5d6a74">your place, updated every moment</text>
+			<text x="354" y="12" font-family="Exo2" font-size="8" fill="#5d6a74" text-anchor="end">speed over the ground</text>
+		</svg>
+		<figcaption>The bar holds a fixed width whatever it is showing, so
+		nothing shuffles sideways while you are reading it mid-corner.</figcaption>
+	</figure>
+
+	<h3>Cells, left to right</h3>
+	<table>
+		<tr><td class="key">POS</td><td>Your position in the field, live. Ordered on total progress, so it changes the instant somebody actually passes you &mdash; not at the line.</td></tr>
+		<tr><td class="key">LAP</td><td>Current lap and the total. The caption turns to <strong>FINAL</strong> and tints on the last one.</td></tr>
+		<tr><td class="key">TIME</td><td>The current lap. Below it, when a ghost is loaded, is your gap to it &mdash; ahead or behind, in seconds.</td></tr>
+		<tr><td class="key">EARNINGS</td><td>What this race has paid so far. Bounty chips land here immediately. The boost meter sits underneath it.</td></tr>
+		<tr><td class="key">ITEM</td><td>What is in your slot, by symbol. Empty is a dash.</td></tr>
+		<tr><td class="key">AMMO</td><td>Rounds for the cannon. An infinity sign means the format is not counting.</td></tr>
+		<tr><td class="key">KM/H</td><td>Ground speed.</td></tr>
+	</table>
+
+	<h3>The map</h3>
+	<p>Bottom right. It shows the real shape of the circuit around you, north-up,
+	with every racer on it: you in white, the field in their own colours, your
+	nemesis ringed in red, and your locked target ringed in yellow. The
+	start line is drawn as a checkered band so you can see it coming.</p>
+
+	<p>When you are leading, the map quietly widens until second and third fit
+	on it. When the pack is on top of you it tightens again so the small gaps
+	are readable. It can be switched off entirely in Settings.</p>
+
+	<h3>Callouts</h3>
+	<p>Above the map: your current lock-on, its distance, and a warning when
+	somebody is closing from behind. The warning blinks when they are within
+	striking distance. There is no radar beyond this and there does not need to
+	be &mdash; anything that can hurt you is either ahead of you or on the map.</p>
+</section>
+
+<!-- ============================== 04 BOOST ============================== -->
+<section class="page">
+	<h2><span class="num">04</span>Boost</h2>
+	<div class="chapter-rule"></div>
+
+	<p class="lede">You always have a boost coming. This is the single most
+	misused system in the sport.</p>
+
+	<h3>The meter</h3>
+	<p>Under EARNINGS is a bar that fills on its own. When it reads
+	<strong>BOOST READY</strong>, pressing Boost spends the whole thing and
+	empties it, and it begins refilling from nothing.</p>
+
+	<table>
+		<thead><tr><th>Setting</th><th class="num">Refill</th><th>Notes</th></tr></thead>
+		<tr><td>Easy</td><td class="num">about 4 seconds</td><td>Effectively always available. Spend it constantly.</td></tr>
+		<tr><td>Hard</td><td class="num">about 11 seconds</td><td>Roughly one per straight. Choose the straight.</td></tr>
+	</table>
+
+	<p>The meter will not begin refilling until the surge you just fired has
+	worn off, so holding the button down achieves nothing. Fire it, let it work,
+	fire it again.</p>
+
+	<div class="note">
+		<span class="tag">Worth knowing</span>
+		The AI field does not have a boost meter. They collect boost pickups off
+		the circuit exactly as you do, but the free recharging surge is yours
+		alone. It is the largest single advantage you are given, and hoarding it
+		throws it away &mdash; an unspent meter is a meter that was never
+		refilling.
+	</div>
+
+	<h3>Where to spend it</h3>
+	<p>On the exit of a bend rather than into one. Boost adds speed above your
+	ceiling and bleeds away over a couple of seconds; spent into a corner most
+	of it is scrubbed off before it does anything. Spent on the way out, it
+	compounds down the following straight.</p>
+
+	<p>The exception is a defensive one. A craft under boost shrugs off obstacle
+	strikes that would otherwise stun it, so a boost spent going into a hazard
+	field is not wasted even if the speed is.</p>
+
+	<h3>Boost pickups</h3>
+	<p>Separate from the meter, and they stack with it. A boost pickup taken
+	from the back of the field lasts noticeably longer than the same pickup
+	taken from the lead &mdash; the league scales it deliberately, so a bad
+	start is recoverable and a comfortable lead is not a coronation.</p>
+</section>
+
+<!-- ============================== 05 PICKUPS ============================== -->
+<section class="page">
+	<h2><span class="num">05</span>Pickups</h2>
+	<div class="chapter-rule"></div>
+
+	<p class="lede">Eight of them. Four fire the moment you touch them; four go
+	into your slot and wait. Knowing which is which is most of the skill.</p>
+
+	<h3>Instant &mdash; these go off on contact</h3>
+
+	<div class="entry">
+		<div class="glyph" style="background:#2f9c6a">&#9654;</div>
+		<div class="body"><strong>Boost</strong>
+		<span>A surge of speed on top of anything your meter is doing. Scaled by
+		your position: longer when you are behind, trimmed when you lead.</span></div>
+	</div>
+
+	<div class="entry">
+		<div class="glyph" style="background:#b5651d">&#9679;</div>
+		<div class="body"><strong>Ammo</strong>
+		<span>Rounds for the cannon. The number floating over the pickup is what
+		it is worth &mdash; 3, 5 or 8. An eight is worth crossing the pipe for;
+		a three usually is not.</span></div>
+	</div>
+
+	<div class="entry">
+		<div class="glyph" style="background:#2f6ea8">&#9678;</div>
+		<div class="body"><strong>Shock</strong>
+		<span>Detonates as you take it. A lightning wave runs both ways along the
+		pipe and stuns every rider it reaches, in front and behind. The Shock
+		Coil upgrade widens it.</span></div>
+	</div>
+
+	<div class="entry">
+		<div class="glyph" style="background:#9a7413">&#9733;</div>
+		<div class="body"><strong>Bounty</strong>
+		<span>A credit chip. Goes straight into the race purse. No tactical
+		value whatsoever and always worth taking.</span></div>
+	</div>
+
+	<h3>Slot &mdash; these wait until you spend them</h3>
+	<p>You may hold <strong>one</strong>. Driving over a second swaps it for the
+	first, so a full slot is a decision, not a saving. Spend it and it is gone
+	until you find another.</p>
+
+	<div class="entry">
+		<div class="glyph" style="background:#2f9c6a">&#11041;</div>
+		<div class="body"><strong>Shield</strong>
+		<span>Six seconds of bubble that eats everything: mines, gates, shots,
+		shockwaves. Not for emergencies &mdash; for the ninety seconds you spend
+		inside a pack.</span></div>
+	</div>
+
+	<div class="entry">
+		<div class="glyph" style="background:#3f80c8">&#10148;</div>
+		<div class="body"><strong>Autopilot</strong>
+		<span>A few seconds of a perfect line, driven for you, with obstacles
+		unable to touch you. Best burned on the one corner of a circuit that
+		keeps catching you out.</span></div>
+	</div>
+
+	<div class="entry">
+		<div class="glyph" style="background:#c2621c">&#10038;</div>
+		<div class="body"><strong>Tail mine</strong>
+		<span>Drops a live mine on the pipe behind you. It arms a moment after it
+		lands, so it can never catch the craft that dropped it. Leave it on the
+		racing line, not in the middle of the tube.</span></div>
+	</div>
+
+	<div class="entry">
+		<div class="glyph" style="background:#8b4fc0">&#9670;</div>
+		<div class="body"><strong>Jammer</strong>
+		<span>Six seconds during which nobody can lock on to you. Rounds already
+		in the air still fly &mdash; it breaks the lock, not the physics.</span></div>
+	</div>
+</section>
+
+<section class="page">
+	<h3>The cannon</h3>
+	<p>Targets are acquired ahead of you and cycled with the target keys. You
+	cannot fire without a lock, and you cannot lock through a jammer. Rounds
+	fly straight from where they were launched, aimed at where the target was
+	when you pulled &mdash; a rider who changes position around the pipe after
+	you fire will usually be missed.</p>
+
+	<p>Hits stun briefly and bleed speed. They do not destroy anything. Nobody
+	retires from a pipe race.</p>
+
+	<div class="note warn">
+		<span class="tag">Do not bother</span>
+		Shooting the leader from eighth place is satisfying and worth nothing.
+		Rounds are best spent on the two craft immediately around you, because
+		those are the only positions you are actually contesting.
+	</div>
+
+	<h3>Taking pickups on the circumference</h3>
+	<p>Pickups sit at fixed positions around the tube, not just along it. A
+	line of them running down the side of the pipe is an invitation to leave the
+	top lane, and the league places them there on purpose. Decide before you
+	arrive whether the row is worth the altitude, because deciding underneath it
+	means taking neither the pickups nor a good line.</p>
+
+	<p>The Magnet upgrade widens the grab radius considerably and turns most
+	near-misses into collections. It is the least glamorous purchase in the
+	garage and one of the most useful.</p>
+</section>
+
+<!-- ============================== 06 HAZARDS ============================== -->
+<section class="page">
+	<h2><span class="num">06</span>Hazards</h2>
+	<div class="chapter-rule"></div>
+
+	<p class="lede">The circuit is not empty. What is on it depends on the
+	format and on how far into the championship you have come.</p>
+
+	<table>
+		<thead><tr><th style="width:26%">Obstacle</th><th>Behaviour</th></tr></thead>
+		<tr><td class="key">Mines</td><td>Static, live, and placed on lines you want to use. A strike stuns and costs speed.</td></tr>
+		<tr><td class="key">Rotating gates</td><td>Barriers that turn around the pipe. They are timed, not random &mdash; watch one for a second and it becomes free.</td></tr>
+		<tr><td class="key">Tail mines</td><td>Dropped by other riders. Newer than the scenery and usually exactly where you were about to go.</td></tr>
+		<tr><td class="key">Flame vents</td><td>Fixed emitters along the tube. Predictable, and easy to forget while you are looking at the map.</td></tr>
+	</table>
+
+	<h3>Being hit</h3>
+	<p>A strike stuns the craft for a moment and bleeds speed. It does not end
+	your race, spin you off the pipe, or reset you. The real cost of a hit is
+	almost never the hit &mdash; it is the two seconds afterwards, when you are
+	slow, low on the circumference, and about to be passed by people who were
+	not.</p>
+
+	<p>Hull Plating shortens the stun and reduces the speed lost. A craft under
+	boost or shield ignores strikes entirely.</p>
+
+	<div class="note">
+		<span class="tag">Difficulty</span>
+		Easy and Hard change the field's pace, how aggressively the AI shoot, and
+		how quickly your boost meter returns. Hazard placement is generated from
+		the circuit seed and does not soften &mdash; a hard circuit is hard on
+		both settings.
+	</div>
+</section>
+
+<!-- ============================== 07 FORMATS ============================== -->
+<section class="page">
+	<h2><span class="num">07</span>Race formats</h2>
+	<div class="chapter-rule"></div>
+
+	<p class="lede">Championship rounds all run Classic rules. The other five
+	formats appear in the Race Lab, where you can put any of them on any
+	circuit.</p>
+
+	<table>
+		<thead><tr><th style="width:24%">Format</th><th>Rules</th><th class="num" style="width:14%">Purse</th></tr></thead>
+		<tr><td class="key">Classic race</td><td>Full grid, guns, boosts, the lot. The championship standard.</td><td class="num">&times;1.0</td></tr>
+		<tr><td class="key">Boost rush</td><td>Every pickup on the circuit is a boost, and there are twice as many. Fewer obstacles. Pure speed.</td><td class="num">&times;1.0</td></tr>
+		<tr><td class="key">Gun run</td><td>You start with a full clip of eight, ammo is everywhere, and the field shoots on sight &mdash; twice as readily as normal.</td><td class="num">&times;1.1</td></tr>
+		<tr><td class="key">Pacifist run</td><td>No weapons for anybody, and nearly twice the obstacles to make up for it. Racing lines only.</td><td class="num">&times;1.0</td></tr>
+		<tr><td class="key">Hazard gauntlet</td><td>A wall of mines and gates, three laps, and only four rivals willing to enter.</td><td class="num">&times;1.3</td></tr>
+		<tr><td class="key">Rival duel</td><td>You and one other craft. Nobody else on the circuit. The purse reflects it.</td><td class="num">&times;1.5</td></tr>
+	</table>
+
+	<h3>On purses outside the championship</h3>
+	<p>Races you build yourself pay three quarters of what the equivalent
+	championship round pays. The championship is meant to remain the sensible
+	way to earn. The first time you win each format, however, the league pays a
+	one-off bonus of 2,000 credits &mdash; six formats, six bonuses, claimable
+	once per career.</p>
+
+	<div class="note">
+		<span class="tag">Recommendation</span>
+		Rival duel on a circuit you know is the fastest money in the game per
+		minute, and the best practice for close racing, because there is nobody
+		else to hide behind.
+	</div>
+</section>
+
+<!-- ============================== 08 CHAMPIONSHIP ============================== -->
+<section class="page">
+	<h2><span class="num">08</span>The championship</h2>
+	<div class="chapter-rule"></div>
+
+	<p class="lede">Twenty-four circuits across six leagues. Each league is
+	four races, and each is faster than the last.</p>
+
+	<table>
+		<thead><tr><th>League</th><th class="num">Pace</th><th class="num">Purse</th><th class="num">Parts cost</th></tr></thead>
+		<tr><td class="key">Bronze</td><td class="num">&times;1.00</td><td class="num">&times;1.0</td><td class="num">&times;1.0</td></tr>
+		<tr><td class="key">Silver</td><td class="num">&times;1.15</td><td class="num">&times;1.6</td><td class="num">&times;2.0</td></tr>
+		<tr><td class="key">Gold</td><td class="num">&times;1.30</td><td class="num">&times;2.6</td><td class="num">&times;3.5</td></tr>
+		<tr><td class="key">Platinum</td><td class="num">&times;1.45</td><td class="num">&times;4.2</td><td class="num">&times;5.5</td></tr>
+		<tr><td class="key">Diamond</td><td class="num">&times;1.60</td><td class="num">&times;6.5</td><td class="num">&times;8.0</td></tr>
+		<tr><td class="key">Hyper</td><td class="num">&times;1.80</td><td class="num">&times;10.0</td><td class="num">&times;12.0</td></tr>
+	</table>
+
+	<p>Finishing a round unlocks the next. Moving up a league requires
+	<strong>three gold medals</strong> from the league you are in &mdash; you do
+	not have to gold all four, and the fourth is there for the stubborn.</p>
+
+	<h3>Medals</h3>
+	<p>Every round awards a medal on your total race time, with one condition
+	attached: your finishing position caps what you can earn, however fast you
+	drove.</p>
+
+	<table>
+		<thead><tr><th>Finish</th><th>Best medal available</th></tr></thead>
+		<tr><td class="key">1st</td><td>Gold, if the time is quick enough</td></tr>
+		<tr><td class="key">2nd &ndash; 3rd</td><td>Silver at most</td></tr>
+		<tr><td class="key">4th and back</td><td>Bronze at most</td></tr>
+	</table>
+
+	<p>A quick lap in fifth place is still fifth place. The league is not
+	interested in your pace if you were not at the front.</p>
+
+	<h3>Money</h3>
+	<p>Every finish pays, scaled by placing and by league. Bounty chips
+	collected on the circuit are added on top, as is the trophy money from any
+	championship cup. It is all spent in one place &mdash; the garage.</p>
+
+	<h3>Careers</h3>
+	<p>Four save slots. Money, parts, unlocks, medals, trophies, ghosts and
+	saved circuits all belong to the slot, not to you. A slot can be wiped from
+	the Save Slots menu, and doing so is the only way to start the championship
+	over.</p>
+</section>
+
+<!-- ============================== 09 CUPS ============================== -->
+<section class="page">
+	<h2><span class="num">09</span>Cups</h2>
+	<div class="chapter-rule"></div>
+
+	<p class="lede">A cup is several rounds run back to back on points. No
+	restarts between them, and no leaving in the middle.</p>
+
+	<table>
+		<thead><tr><th>Cup</th><th class="num">Rounds</th><th class="num">Opens</th><th class="num">1st</th><th class="num">2nd</th><th class="num">3rd</th></tr></thead>
+		<tr><td class="key">Rookie Cup</td><td class="num">3</td><td class="num">race 1</td><td class="num">4,000</td><td class="num">2,000</td><td class="num">1,000</td></tr>
+		<tr><td class="key">Hyper Cup</td><td class="num">3</td><td class="num">race 5</td><td class="num">10,000</td><td class="num">5,000</td><td class="num">2,500</td></tr>
+		<tr><td class="key">Storm Cup</td><td class="num">3</td><td class="num">race 9</td><td class="num">18,000</td><td class="num">9,000</td><td class="num">4,500</td></tr>
+		<tr><td class="key">Grand Prix</td><td class="num">6</td><td class="num">race 12</td><td class="num">40,000</td><td class="num">20,000</td><td class="num">10,000</td></tr>
+	</table>
+
+	<h3>Points</h3>
+	<p>Awarded per round to the top eight, and carried across the cup:</p>
+
+	<table>
+		<thead><tr><th>Place</th><th class="num">1st</th><th class="num">2nd</th><th class="num">3rd</th><th class="num">4th</th><th class="num">5th</th><th class="num">6th</th><th class="num">7th</th><th class="num">8th</th></tr></thead>
+		<tr class="total"><td class="key">Points</td><td class="num">10</td><td class="num">8</td><td class="num">6</td><td class="num">5</td><td class="num">4</td><td class="num">3</td><td class="num">2</td><td class="num">1</td></tr>
+	</table>
+
+	<p>The spread is deliberately shallow behind the podium. A cup is rarely won
+	by a single victory and is frequently lost by a single bad round, so the
+	arithmetic rewards finishing every race respectably over winning two and
+	scattering the rest.</p>
+
+	<div class="note">
+		<span class="tag">Strategy</span>
+		The Grand Prix is six rounds drawn from across the championship and pays
+		more than most leagues will in a season. It is also the one cup where a
+		single retirement-grade disaster is survivable, because there are five
+		more rounds to repair it in.
+	</div>
+</section>
+
+<!-- ============================== 10 TOUR ============================== -->
+<section class="page">
+	<h2><span class="num">10</span>Tour</h2>
+	<div class="chapter-rule"></div>
+
+	<p class="lede">One ladder, a new one every week, the same for everybody who
+	races it. It ends when you are beaten.</p>
+
+	<h3>How a run works</h3>
+	<p>You start at stage one and keep going. Every stage is a fresh circuit
+	with its own theme, layout and rules, and every stage is harder than the
+	one before. Miss the required finishing position and the run is over &mdash;
+	there is no retry, and the next attempt starts again at stage one.</p>
+
+	<table>
+		<thead><tr><th>Stages</th><th>You must finish</th></tr></thead>
+		<tr><td class="key">1 &ndash; 12</td><td>On the podium &mdash; third or better</td></tr>
+		<tr><td class="key">13 &ndash; 24</td><td>Second or better</td></tr>
+		<tr><td class="key">25 and beyond</td><td>First. Nothing else counts</td></tr>
+	</table>
+
+	<p>The circuits escalate alongside the bar. Corkscrews start appearing from
+	stage four, and the layout library opens up to twists and pretzels from
+	stage seven. By the time the ladder demands a win, it is also handing you
+	the strangest pipes the generator can build.</p>
+
+	<h3>Scoring</h3>
+	<p>Your score is <strong>distance covered</strong>, not stages cleared and
+	not time. Every metre counts, including the metres of the race you
+	eventually lost, so there is no such thing as a wasted final stage &mdash;
+	push to the last corner of a race you know you have lost, because it is
+	still adding to the number.</p>
+
+	<p>Two records are kept: your best on this week's ladder, and your best of
+	all time across every week. The weekly one resets on Monday. The all-time
+	one never does.</p>
+
+	<div class="note">
+		<span class="tag">Regulation</span>
+		Tour runs stock craft. No garage parts apply, to anyone. A tour run
+		measures driving and nothing else, which is also why it is the fairest
+		comparison the game offers.
+	</div>
+</section>
+
+<!-- ============================== 11 DAILY & LAB ============================== -->
+<section class="page">
+	<h2><span class="num">11</span>Daily &amp; Race Lab</h2>
+	<div class="chapter-rule"></div>
+
+	<h3>The daily</h3>
+	<p>One circuit, generated from the date, identical for every player in the
+	world that day. Your best time stands until midnight, when it is replaced by
+	a new circuit and the board starts again.</p>
+
+	<p>Like Tour, the daily runs stock craft &mdash; garage parts are ignored.
+	A board where the fastest time belonged to whoever had spent the most money
+	would rank wallets rather than driving, and a player on their first day
+	could never touch it.</p>
+
+	<h3>Race Lab</h3>
+	<p>Where you build circuits. Every dial is independent and the result is
+	reproducible: the same settings always build the same pipe.</p>
+
+	<table>
+		<tr><td class="key">Seed</td><td>The number the circuit is grown from. Roll it, or type one in.</td></tr>
+		<tr><td class="key">Place</td><td>The setting the pipe is built through.</td></tr>
+		<tr><td class="key">Intensity</td><td>How hard the field races and how much is on the circuit.</td></tr>
+		<tr><td class="key">Format</td><td>Any of the six from chapter 07.</td></tr>
+		<tr><td class="key">Pipe</td><td>Tube width. A wider pipe is a more forgiving surface.</td></tr>
+		<tr><td class="key">Track</td><td>Classic, stunt, crazy or weird &mdash; how far the layout is allowed to go.</td></tr>
+		<tr><td class="key">Twists</td><td>Permits corkscrews and pretzels in the layout.</td></tr>
+		<tr><td class="key">Laps</td><td>Exact lap count, or leave it to the format.</td></tr>
+		<tr><td class="key">Colour</td><td>The pipe's livery, or automatic.</td></tr>
+	</table>
+
+	<p>Circuits worth keeping go into My Tracks, which belongs to the career
+	slot that built them. Several saved circuits can be strung together into a
+	Lab Grand Prix and run as a cup of your own design.</p>
+
+	<div class="note">
+		<span class="tag">Sharing a circuit</span>
+		A seed on its own does not reproduce a circuit &mdash; the pipe width,
+		track dial and twists all change what that seed builds. To hand someone
+		your circuit exactly, give them every dial, not just the number.
+	</div>
+</section>
+
+<!-- ============================== 12 GARAGE ============================== -->
+<section class="page">
+	<h2><span class="num">12</span>The garage</h2>
+	<div class="chapter-rule"></div>
+
+	<p class="lede">Six parts, bought in tiers. Parts are held per class, so
+	moving up a league means starting that league's build from scratch.</p>
+
+	<table>
+		<thead><tr><th style="width:26%">Part</th><th>What it does</th></tr></thead>
+		<tr><td class="key">Engine</td><td>Raises top speed. The later leagues field AI you cannot out-cruise on a stock engine, so this is not optional forever.</td></tr>
+		<tr><td class="key">Thrusters</td><td>Harder acceleration off the line and back up to pace after a strike.</td></tr>
+		<tr><td class="key">Stabilizers</td><td>More steering authority around the circumference. The float remains &mdash; you simply get more say in it.</td></tr>
+		<tr><td class="key">Hull plating</td><td>Strikes sting less: shorter stun, less speed bled while it lasts.</td></tr>
+		<tr><td class="key">Magnet</td><td>Pickups near your line snap to the craft. Turns near-misses into collections.</td></tr>
+		<tr><td class="key">Shock coil</td><td>Widens the shock pickup's detonation, in both directions along the pipe.</td></tr>
+	</table>
+
+	<h3>What to buy first</h3>
+	<p>Stabilizers, then Engine. Steering authority makes every other system on
+	the craft usable, and a rider who can hold the line they intended will beat
+	a faster rider who cannot. Engine matters from Gold league onward, when the
+	field's pace starts to outrun a stock car.</p>
+
+	<p>Hull Plating is worth buying in the formats that deserve it &mdash;
+	Hazard Gauntlet and Pacifist Run, where the circuit is the opponent.</p>
+
+	<h3>Craft</h3>
+	<p>Five hulls are available across the championship. They are
+	<strong>appearance only</strong>: no hull is faster than another, and the
+	parts you have bought apply whichever you are flying. Pick the one you like
+	looking at from behind, because you will be looking at it for a long time.</p>
+
+	<table>
+		<tr><td class="key">Pipe Runner</td><td>The one that started it all.</td></tr>
+		<tr><td class="key">Craft Racer</td><td>Factory team chassis. Looks fast standing still.</td></tr>
+		<tr><td class="key">Speeder B</td><td>Slim profile, all engine.</td></tr>
+		<tr><td class="key">Speeder C</td><td>Twin-hull stability for the crazy pipes.</td></tr>
+		<tr><td class="key">Speeder D</td><td>The collector's flagship.</td></tr>
+	</table>
+</section>
+
+<!-- ============================== 13 SETTINGS ============================== -->
+<section class="page">
+	<h2><span class="num">13</span>Settings &amp; media</h2>
+	<div class="chapter-rule"></div>
+
+	<h3>Accessibility</h3>
+	<p>Settings carries a <strong>Colours</strong> option with three correction
+	modes &mdash; Red-Green 1, Red-Green 2 and Blue-Yellow &mdash; which shift
+	the whole picture so on-screen colours are easier to tell apart. It is off
+	by default and applies everywhere, including menus and the map.</p>
+
+	<p>Every control is rebindable. The minimap can be switched off for riders
+	who would rather read the pipe than a map. The frame rate can be capped.</p>
+
+	<h3>Screenshots</h3>
+	<p>Screenshot grabs exactly what is on screen and writes a PNG to your
+	Pictures folder, under <em>Pictures/HyperPipes</em>. The folder can be opened
+	from Settings &rsaquo; Photos at any time.</p>
+
+	<p>Hide HUD blanks the entire readout during a race or a replay for a clean
+	shot. A large FINAL LAP callout still flashes through it, so you do not lose
+	track of the race while taking pictures of it. Steam's own screenshot key
+	continues to work alongside this.</p>
+
+	<h3>Ghosts</h3>
+	<p>Your quickest run on a circuit is recorded and raced back at you next
+	time you visit. Ghosts cannot be collided with, do not score, and are drawn
+	deliberately dimmer than a live rival so they are never mistaken for one.
+	The delta to your ghost sits under the lap clock. Ghosts can be switched off
+	in Settings.</p>
+
+	<h3>Radio</h3>
+	<p>The in-race radio cycles with the radio keys. Cycling past the last track
+	switches it off. Music and effect volumes are separate sliders, and the
+	music volume can also be trimmed mid-race without pausing.</p>
+
+	<div class="note">
+		<span class="tag">Save data</span>
+		Careers, settings, keybindings, ghosts and saved circuits are written to
+		your user profile folder. Deleting a career slot from the Save Slots menu
+		is permanent and is not recoverable from inside the game.
+	</div>
+</section>
+
+<!-- ============================== 14 RACE CRAFT ============================== -->
+<section class="page">
+	<h2><span class="num">14</span>Race craft</h2>
+	<div class="chapter-rule"></div>
+
+	<p class="lede">Everything above is regulation. What follows is advice, and
+	it is the part that will actually make you quicker.</p>
+
+	<h3>The five that matter</h3>
+
+	<h4>Make smaller inputs than you think you need</h4>
+	<p>The craft floats. Every correction you make arrives slightly after you
+	make it, and the usual beginner's mistake is to correct again before the
+	first one has landed. That is what produces the slow oscillation from one
+	side of the pipe to the other. Input once, wait, then judge.</p>
+
+	<h4>Stop treating the side of the pipe as a mistake</h4>
+	<p>Half the circumference is usable and most riders use a third of it.
+	Dropping deliberately into a bend is faster than holding the top through it,
+	and the only thing that makes it feel dangerous is unfamiliarity.</p>
+
+	<h4>Spend the boost meter</h4>
+	<p>It is refilling whether or not you are using it, and it is the one system
+	the AI field does not have. An unspent meter is not saved &mdash; it is
+	wasted, because it stopped refilling the moment it filled.</p>
+
+	<h4>Fight the two craft nearest you</h4>
+	<p>Positions are won and lost against the rider immediately ahead and the
+	one immediately behind. Rounds spent on the leader from sixth are rounds not
+	spent on the person actually taking your place.</p>
+
+	<h4>Finish the race you are losing</h4>
+	<p>In Tour, the metres still count. In a cup, eighth place is a point, and
+	cups are lost by zeroes rather than won by victories. In the championship,
+	a poor finish still pays and still unlocks the next round.</p>
+
+	<h3>And one thing not to do</h3>
+	<p>Do not brake because you feel unsteady. Braking on a pipe reduces the
+	speed holding you against the surface, which makes the craft feel worse, not
+	better, and the instinct to brake harder from there is a spiral. Brake for
+	bends. Everywhere else, steer.</p>
+
+	<div class="note">
+		<span class="tag">Last word</span>
+		The tutorial takes four minutes and turns most of this chapter into
+		muscle memory. It is on the main menu, in the footer, and it can be run
+		as many times as you like.
+	</div>
+</section>
+
+<!-- ============================== BACK ============================== -->
+<section class="page">
+	<div style="height:150mm; display:flex; flex-direction:column; justify-content:center; text-align:center;">
+		<div class="stamp">End of handbook</div>
+		<h2 style="margin-top:8mm; font-size:20pt; letter-spacing:0.3em;">Hyper Pipes</h2>
+		<p style="color:#5d6a74; margin-top:4mm;">Hold the top. Spend the boost. Finish the race.</p>
+	</div>
+	<div class="cover-foot">
+		<span>CrashBamBoom</span>
+		<span>Original by BeefCakePie</span>
+	</div>
+</section>
+
+</body>
+</html>
