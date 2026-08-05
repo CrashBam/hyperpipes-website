@@ -1,7 +1,11 @@
 /* ==========================================================================
    HYPERPIPES — site styles
-   Brand colours are lifted straight from the game's app icon so the site and
-   the game read as one thing: cyan -> purple -> pink neon on deep navy.
+
+   The look is lifted from the Steam capsule art, not invented here: true
+   black, an electric-blue double frame with cut corners, and hot red for
+   anything that means speed or energy. Every colour below was sampled out
+   of _STEAM_READY/HyperPipes_Steam_MainCapsule_1232x706.png, so the store
+   page and the site are literally the same palette.
    ========================================================================== */
 
 @font-face {
@@ -18,23 +22,38 @@
 }
 
 :root {
-  --void:      #05060f;
-  --navy:      #0a0b1d;
-  --panel:     #10122b;
-  --panel-hi:  #171a3d;
-  --line:      rgba(120, 140, 255, 0.16);
+  --void:      #000208;
+  --navy:      #03050d;
+  --panel:     #070a14;
+  --panel-hi:  #0c1022;
+  --line:      rgba(0, 118, 238, 0.30);
 
-  --cyan:      #00f0ff;
-  --purple:    #a44dff;
-  --pink:      #ff2e88;
+  /* the two lines of the capsule's frame, measured off the PNG:
+     ice #ccf7ff on the outside, electric blue #0076ee just inside it */
+  --ice:       #ccf7ff;
+  --blue:      #0076ee;
+  --blue-hi:   #4fb9ff;
+  --blue-lo:   #0050b0;
 
-  --text:      #e6ebff;
-  --muted:     #8f98c4;
+  /* the pipe's rings — the capsule's only warm colour, so it is the only
+     thing on the page allowed to mean "go faster" */
+  --red:       #ff1000;
+  --red-hot:   #ffbb98;
 
-  --neon: linear-gradient(100deg, var(--cyan), var(--purple) 55%, var(--pink));
+  --text:      #e8f4ff;
+  --muted:     #7f93ad;
+
+  --neon: linear-gradient(100deg, var(--blue), var(--blue-hi) 42%, var(--red));
+
+  /* THE FRAME. One SVG, drawn once, stretched onto any box by border-image.
+     The corner slice (26) is never scaled by the browser, so the 45-degree
+     cuts stay sharp at any size; only the straight runs stretch. Elements
+     that want a smaller frame just set --fw. */
+  --frame: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='none'><path d='M3 17.5L17.5 3H82.5L97 17.5V82.5L82.5 97H17.5L3 82.5Z' stroke='%23ccf7ff' stroke-width='2.4'/><path d='M11 22L22 11H78L89 22V78L78 89H22L11 78Z' stroke='%230076ee' stroke-width='1.8'/></svg>");
+  --fw: 26px;
 
   --shell: min(1180px, 92vw);
-  --r: 14px;
+  --r: 0;                    /* the capsule has no rounded corners anywhere */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -52,6 +71,27 @@ body {
   overflow-x: hidden;
 }
 
+/* a faint starfield over the whole page, so sections that aren't the hero
+   still read as deep space rather than flat black */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.4px 1.4px at 18% 12%,  rgba(255,255,255,.55), transparent),
+    radial-gradient(1px 1px   at 73% 27%,  rgba(255,255,255,.42), transparent),
+    radial-gradient(1.6px 1.6px at 41% 63%,  rgba(207,238,255,.38), transparent),
+    radial-gradient(1px 1px   at 88% 71%,  rgba(255,255,255,.34), transparent),
+    radial-gradient(1.2px 1.2px at 9%  84%,  rgba(255,255,255,.30), transparent),
+    radial-gradient(1px 1px   at 57% 91%,  rgba(207,238,255,.30), transparent),
+    radial-gradient(1.3px 1.3px at 31% 41%,  rgba(255,255,255,.26), transparent);
+  background-size: 620px 520px;
+  background-repeat: repeat;
+  opacity: .55;
+}
+
 h1, h2, h3, .mono {
   font-family: "Orbitron", "Exo2", sans-serif;
   letter-spacing: 0.04em;
@@ -59,12 +99,59 @@ h1, h2, h3, .mono {
   margin: 0;
 }
 
-a { color: var(--cyan); text-decoration: none; }
+a { color: var(--blue-hi); text-decoration: none; }
 a:hover { color: #fff; }
 
 img, svg { max-width: 100%; display: block; }
 
 .shell { width: var(--shell); margin-inline: auto; }
+
+/* --- the capsule frame --------------------------------------------------- */
+/* Drawn on a pseudo-element pinned to the box, so it costs no layout and no
+   markup — any element can be framed just by naming it here. */
+
+.card,
+.shot,
+.diagram,
+.ribbon-panel,
+.band,
+.callout,
+.btn,
+.badge,
+.steps .num,
+.online-points .k { position: relative; }
+
+.card::before,
+.shot::before,
+.diagram::before,
+.ribbon-panel::before,
+.band::before,
+.callout::before,
+.btn::before,
+.badge::before,
+.steps .num::before,
+.online-points .k::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  border: 26px solid transparent;
+  border-image: var(--frame) 26 / var(--fw) stretch;
+  opacity: .62;
+  transition: opacity .22s ease;
+}
+
+/* Small controls get a smaller frame and their corners physically cut, so a
+   filled button's square corner never pokes out past the diagonal line. */
+.btn, .badge, .steps .num, .online-points .k {
+  --ch: 9px;
+  clip-path: polygon(
+    var(--ch) 0, calc(100% - var(--ch)) 0,
+    100% var(--ch), 100% calc(100% - var(--ch)),
+    calc(100% - var(--ch)) 100%, var(--ch) 100%,
+    0 calc(100% - var(--ch)), 0 var(--ch));
+}
 
 /* --- shared section furniture ------------------------------------------- */
 
@@ -75,7 +162,7 @@ section { position: relative; padding: 96px 0; }
   font-size: 12px;
   letter-spacing: 0.34em;
   text-transform: uppercase;
-  color: var(--cyan);
+  color: var(--blue-hi);
   margin: 0 0 14px;
   display: flex;
   align-items: center;
@@ -85,7 +172,7 @@ section { position: relative; padding: 96px 0; }
   content: "";
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, rgba(0, 240, 255, 0.5), transparent);
+  background: linear-gradient(90deg, var(--blue), transparent);
 }
 
 .section-title {
@@ -105,42 +192,43 @@ section { position: relative; padding: 96px 0; }
 /* --- buttons ------------------------------------------------------------- */
 
 .btn {
+  --fw: 16px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 15px 30px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
+  border: 0;
   font-family: "Orbitron", sans-serif;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 118, 238, 0.07);
   cursor: pointer;
-  transition: transform .18s ease, box-shadow .18s ease,
-              background .18s ease, border-color .18s ease;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
 }
 .btn:hover {
   color: #fff;
   transform: translateY(-2px);
-  border-color: rgba(0, 240, 255, 0.55);
-  background: rgba(0, 240, 255, 0.09);
+  background: rgba(0, 118, 238, 0.18);
+  box-shadow: 0 8px 30px rgba(0, 118, 238, 0.28);
 }
+.btn:hover::before { opacity: 1; }
 .btn svg { width: 17px; height: 17px; flex: none; }
 
+/* the one red thing in the furniture: the primary call to action */
 .btn-primary {
-  background: var(--neon);
-  border-color: transparent;
+  background: linear-gradient(100deg, #ff3a12, var(--red) 55%, #d20c00);
   color: #05060f;
-  box-shadow: 0 8px 34px rgba(164, 77, 255, 0.35);
+  box-shadow: 0 8px 34px rgba(255, 16, 0, 0.30);
 }
 .btn-primary:hover {
   color: #05060f;
-  background: var(--neon);
-  box-shadow: 0 12px 42px rgba(164, 77, 255, 0.55);
+  background: linear-gradient(100deg, #ff4c22, #ff1f0c 55%, #e01000);
+  box-shadow: 0 12px 46px rgba(255, 16, 0, 0.48);
 }
+.btn-primary::before { opacity: .85; }
 
 /* --- top bar ------------------------------------------------------------- */
 
@@ -154,7 +242,7 @@ section { position: relative; padding: 96px 0; }
 }
 .topbar.stuck {
   padding: 10px 0;
-  background: rgba(5, 6, 15, 0.82);
+  background: rgba(0, 2, 8, 0.86);
   backdrop-filter: blur(14px);
   border-bottom-color: var(--line);
 }
@@ -165,7 +253,7 @@ section { position: relative; padding: 96px 0; }
 }
 
 .brand { display: flex; align-items: center; gap: 12px; }
-.brand img { width: 38px; height: 38px; border-radius: 9px; }
+.brand img { width: 38px; height: 38px; }
 .brand b {
   font-family: "Orbitron", sans-serif;
   font-size: 17px;
@@ -183,7 +271,7 @@ section { position: relative; padding: 96px 0; }
   color: var(--muted);
 }
 .nav a:hover { color: #fff; }
-.nav .btn { padding: 11px 22px; font-size: 11px; }
+.nav .btn { --fw: 14px; padding: 11px 22px; font-size: 11px; }
 
 /* --- hero ---------------------------------------------------------------- */
 
@@ -196,7 +284,7 @@ section { position: relative; padding: 96px 0; }
   overflow: hidden;
 }
 
-/* the receding neon tunnel behind the headline */
+/* the pipe sweeping away into the distance, with craft racing its crown */
 .hero-art {
   position: absolute;
   inset: 0;
@@ -204,48 +292,32 @@ section { position: relative; padding: 96px 0; }
   pointer-events: none;
   overflow: hidden;
 }
-.hero-art::after {                 /* vignette so text always wins */
+/* The vignette is a pool of shadow under the words, not a wash over the whole
+   picture — the capsule's pipe is the brightest thing on it, and dimming the
+   art evenly to protect the copy threw all of that away. */
+.hero-art::after {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 50% 45%,
-      rgba(5, 6, 15, .38) 0%, rgba(5, 6, 15, .62) 55%, var(--void) 88%),
-    linear-gradient(to bottom, transparent 60%, var(--void) 100%);
+    radial-gradient(ellipse 52% 40% at 50% 50%,
+      rgba(0, 2, 8, .88) 0%, rgba(0, 2, 8, .60) 52%, transparent 100%),
+    linear-gradient(to bottom, transparent 70%, var(--void) 100%);
 }
 .hero-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-
-/* rings are concentric, so scaling each about its own box centre reads as one
-   tunnel rushing at the camera — and fill-box behaves the same in every browser */
-.ring {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: rush 7s linear infinite;
-}
-.ring:nth-child(2) { animation-delay: -1.16s; }
-.ring:nth-child(3) { animation-delay: -2.33s; }
-.ring:nth-child(4) { animation-delay: -3.5s; }
-.ring:nth-child(5) { animation-delay: -4.66s; }
-.ring:nth-child(6) { animation-delay: -5.83s; }
-
-@keyframes rush {
-  0%   { transform: scale(.06); opacity: 0; }
-  12%  { opacity: .9; }
-  70%  { opacity: .55; }
-  100% { transform: scale(3.6); opacity: 0; }
-}
 
 .hero-inner { position: relative; z-index: 1; }
 
 .badge {
+  --fw: 13px;
+  --ch: 7px;
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  padding: 7px 17px;
+  padding: 8px 18px;
   margin-bottom: 26px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
+  border: 0;
+  background: rgba(0, 118, 238, 0.10);
   font-family: "Orbitron", sans-serif;
   font-size: 11px;
   letter-spacing: 0.22em;
@@ -254,26 +326,32 @@ section { position: relative; padding: 96px 0; }
 }
 .badge .dot {
   width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--cyan);
-  box-shadow: 0 0 10px var(--cyan);
+  background: var(--red);
+  box-shadow: 0 0 10px var(--red);
   animation: blip 2.4s ease-in-out infinite;
 }
 @keyframes blip { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
 
+/* The capsule wordmark: ice-white, slanted, with a hard blue outline and a
+   blue halo. The halo is deliberately darker than the glyphs — a glow the
+   same colour as the text just reads as blur. */
 .hero h1 {
   /* one unbreakable word since the rename, so the floor has to stay small
      enough to fit a 320px phone — it can't wrap its way out of trouble */
   font-size: clamp(34px, 11vw, 132px);
   font-weight: 900;
+  font-style: italic;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  background: var(--neon);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 0 34px rgba(0, 240, 255, 0.28));
-  margin-bottom: 6px;
+  color: var(--ice);
+  text-shadow:
+    -0.018em 0 0 var(--blue),  0.018em 0 0 var(--blue),
+     0 -0.018em 0 var(--blue), 0 0.018em 0 var(--blue),
+    -0.014em -0.014em 0 var(--blue),  0.014em -0.014em 0 var(--blue),
+    -0.014em  0.014em 0 var(--blue),  0.014em  0.014em 0 var(--blue),
+     0 0 0.22em rgba(0, 118, 238, .60),
+     0 0 0.6em  rgba(0, 118, 238, .32);
+  margin-bottom: 10px;
 }
 
 .hero .tagline {
@@ -312,7 +390,7 @@ section { position: relative; padding: 96px 0; }
 }
 .scroll-hint span.line {
   width: 1px; height: 34px;
-  background: linear-gradient(var(--cyan), transparent);
+  background: linear-gradient(var(--blue-hi), transparent);
   animation: drop 2.2s ease-in-out infinite;
 }
 @keyframes drop {
@@ -320,11 +398,22 @@ section { position: relative; padding: 96px 0; }
   50%      { opacity: 1;   transform: scaleY(1);  transform-origin: top; }
 }
 
+/* --- ship animation ------------------------------------------------------ */
+/* The craft themselves move with SMIL inside the hero SVG (see index.html) —
+   it stays in the SVG's own coordinate system however the art is cropped.
+   This is only the engine flicker, which is easier to express in CSS. */
+
+.flare { animation: flicker 0.42s steps(2, end) infinite; }
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .72; }
+}
+
 /* --- ticker strip -------------------------------------------------------- */
 
 .strip {
   border-block: 1px solid var(--line);
-  background: linear-gradient(90deg, rgba(0, 240, 255, .06), rgba(255, 46, 136, .06));
+  background: linear-gradient(90deg, rgba(0, 118, 238, .10), rgba(255, 16, 0, .08));
   padding: 0;
   overflow: hidden;
 }
@@ -344,10 +433,9 @@ section { position: relative; padding: 96px 0; }
   font-family: "Orbitron", sans-serif;
   font-size: 26px;
   font-weight: 800;
-  background: var(--neon);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-style: italic;
+  color: var(--ice);
+  text-shadow: 0 0 14px rgba(0, 118, 238, .7);
 }
 .strip .stat span {
   font-size: 12px;
@@ -365,34 +453,31 @@ section { position: relative; padding: 96px 0; }
 }
 
 .card {
-  position: relative;
-  padding: 30px 28px 32px;
-  border: 1px solid var(--line);
-  border-radius: var(--r);
-  background: linear-gradient(160deg, var(--panel), var(--navy));
-  overflow: hidden;
-  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+  padding: 38px 36px 40px;
+  border: 0;
+  background: linear-gradient(160deg, var(--panel), var(--void));
+  transition: transform .22s ease, box-shadow .22s ease;
 }
-.card::before {                       /* neon top edge, lights up on hover */
+.card::after {                       /* red edge at the foot, lights up on hover */
   content: "";
   position: absolute;
-  inset: 0 0 auto 0;
+  inset: auto 26px 12px 26px;
   height: 2px;
-  background: var(--neon);
-  opacity: .35;
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
+  opacity: .22;
   transition: opacity .22s ease;
 }
 .card:hover {
   transform: translateY(-4px);
-  border-color: rgba(0, 240, 255, 0.35);
-  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.6), 0 0 34px rgba(0, 118, 238, .12);
 }
 .card:hover::before { opacity: 1; }
+.card:hover::after  { opacity: .9; }
 
 .card .ico {
   width: 46px; height: 46px;
   margin-bottom: 18px;
-  color: var(--cyan);
+  color: var(--blue-hi);
 }
 .card h3 {
   font-size: 16px;
@@ -416,23 +501,23 @@ section { position: relative; padding: 96px 0; }
 .steps { display: grid; gap: 26px; margin: 0; padding: 0; list-style: none; }
 .steps li { display: grid; grid-template-columns: 46px 1fr; gap: 18px; }
 .steps .num {
+  --fw: 13px;
+  --ch: 7px;
   width: 46px; height: 46px;
   display: grid; place-items: center;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 240, 255, .4);
   font-family: "Orbitron", sans-serif;
   font-weight: 800;
-  color: var(--cyan);
-  background: rgba(0, 240, 255, .07);
+  font-style: italic;
+  color: var(--ice);
+  background: rgba(0, 118, 238, .12);
 }
 .steps h3 { font-size: 15px; text-transform: uppercase; margin-bottom: 6px; }
 .steps p { margin: 0; color: var(--muted); font-size: 15.5px; }
 
 .diagram {
-  border: 1px solid var(--line);
-  border-radius: var(--r);
+  border: 0;
   background: radial-gradient(circle at 50% 40%, var(--panel-hi), var(--void) 72%);
-  padding: 26px;
+  padding: 34px;
 }
 .diagram figcaption {
   margin-top: 14px;
@@ -458,21 +543,21 @@ section { position: relative; padding: 96px 0; }
 }
 
 .shot {
-  position: relative;
   aspect-ratio: 16 / 9;
-  border: 1px solid var(--line);
-  border-radius: var(--r);
+  border: 0;
   overflow: hidden;
   background: var(--panel);
-  transition: transform .22s ease, border-color .22s ease;
+  transition: transform .22s ease;
 }
-.shot:hover { transform: translateY(-4px); border-color: rgba(0, 240, 255, .4); }
+.shot:hover { transform: translateY(-4px); }
+.shot:hover::before { opacity: 1; }
 .shot img { width: 100%; height: 100%; object-fit: cover; }
 .shot figcaption {
   position: absolute;
   inset: auto 0 0 0;
-  padding: 26px 16px 12px;
-  background: linear-gradient(transparent, rgba(5, 6, 15, .92));
+  z-index: 2;
+  padding: 30px 26px 18px;
+  background: linear-gradient(transparent, rgba(0, 2, 8, .94));
   font-family: "Orbitron", sans-serif;
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -484,12 +569,12 @@ section { position: relative; padding: 96px 0; }
 .shot.empty { display: grid; place-items: center; }
 .shot.empty .plate { position: absolute; inset: 0; width: 100%; height: 100%; }
 .shot.empty .chip {
+  --fw: 13px;
+  --ch: 7px;
   position: relative;
-  z-index: 1;
-  padding: 8px 16px;
-  border: 1px solid rgba(255, 255, 255, .18);
-  border-radius: 999px;
-  background: rgba(5, 6, 15, .55);
+  z-index: 2;
+  padding: 9px 18px;
+  background: rgba(0, 2, 8, .62);
   backdrop-filter: blur(3px);
   font-family: "Orbitron", sans-serif;
   font-size: 10px;
@@ -501,25 +586,24 @@ section { position: relative; padding: 96px 0; }
 /* --- "coming soon" panel (online multiplayer) ---------------------------- */
 
 .ribbon-panel {
-  position: relative;
   overflow: hidden;
-  padding: 54px 48px 44px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
+  padding: 60px 56px 50px;
+  border: 0;
   background:
-    radial-gradient(circle at 85% 0%, rgba(164, 77, 255, .16), transparent 50%),
-    linear-gradient(160deg, var(--panel), var(--navy));
+    radial-gradient(circle at 85% 0%, rgba(0, 118, 238, .16), transparent 50%),
+    linear-gradient(160deg, var(--panel), var(--void));
 }
 
 /* diagonal flash across the top-right corner */
 .ribbon {
   position: absolute;
-  top: 30px;
+  top: 34px;
   right: -66px;
+  z-index: 4;
   width: 250px;
   padding: 8px 0;
   transform: rotate(45deg);
-  background: var(--neon);
+  background: linear-gradient(100deg, #ff3a12, var(--red) 60%, #d20c00);
   color: #05060f;
   text-align: center;
   font-family: "Orbitron", sans-serif;
@@ -527,7 +611,7 @@ section { position: relative; padding: 96px 0; }
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, .45);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .55);
 }
 
 .online-points {
@@ -537,17 +621,19 @@ section { position: relative; padding: 96px 0; }
   margin-bottom: 38px;
 }
 .online-points .k {
+  --fw: 13px;
+  --ch: 7px;
   display: grid;
   place-items: center;
   width: 44px; height: 44px;
   margin-bottom: 14px;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 240, 255, .35);
-  background: rgba(0, 240, 255, .08);
+  border: 0;
+  background: rgba(0, 118, 238, .12);
   font-family: "Orbitron", sans-serif;
   font-size: 19px;
   font-weight: 800;
-  color: var(--cyan);
+  font-style: italic;
+  color: var(--ice);
 }
 .online-points h3 { font-size: 15px; text-transform: uppercase; margin-bottom: 8px; }
 .online-points p { margin: 0; color: var(--muted); font-size: 15px; }
@@ -567,23 +653,20 @@ section { position: relative; padding: 96px 0; }
   flex: none;
   width: 9px; height: 9px;
   margin-top: 7px;
-  border-radius: 50%;
-  background: var(--cyan);
-  box-shadow: 0 0 10px var(--cyan);
+  background: var(--red);
+  box-shadow: 0 0 10px var(--red);
   animation: blip 2.4s ease-in-out infinite;
 }
 
 /* --- bug report band ----------------------------------------------------- */
 
 .band {
-  position: relative;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 54px 48px;
+  border: 0;
+  padding: 60px 56px;
   background:
-    radial-gradient(circle at 12% 0%, rgba(0, 240, 255, .12), transparent 45%),
-    radial-gradient(circle at 88% 100%, rgba(255, 46, 136, .12), transparent 45%),
-    linear-gradient(160deg, var(--panel), var(--navy));
+    radial-gradient(circle at 12% 0%, rgba(0, 118, 238, .14), transparent 45%),
+    radial-gradient(circle at 88% 100%, rgba(255, 16, 0, .10), transparent 45%),
+    linear-gradient(160deg, var(--panel), var(--void));
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 40px;
@@ -614,7 +697,7 @@ footer a, footer p {
   color: var(--muted);
   margin: 0;
 }
-footer a:hover { color: var(--cyan); }
+footer a:hover { color: var(--blue-hi); }
 
 /* --- scroll reveal ------------------------------------------------------- */
 
@@ -629,12 +712,16 @@ footer a:hover { color: var(--cyan); }
 
 @media (max-width: 900px) {
   .play-wrap { grid-template-columns: 1fr; gap: 40px; }
-  .band { grid-template-columns: 1fr; padding: 40px 28px; }
-  .ribbon-panel { padding: 44px 26px 36px; }
+  .band { grid-template-columns: 1fr; padding: 44px 30px; }
+  .ribbon-panel { padding: 48px 28px 38px; }
   .ribbon { top: 22px; right: -72px; width: 230px; font-size: 11px; }
+  .card { padding: 32px 28px 34px; }
   .nav { gap: 18px; }
   .nav a:not(.btn) { display: none; }
   section { padding: 72px 0; }
+  /* the frame's cut corners are a fixed size, so on small boxes it has to
+     shrink with them or the diagonals eat the content */
+  :root { --fw: 20px; }
 }
 
 /* very narrow phones: the wordmark is one long word now, so give the top bar
@@ -674,7 +761,7 @@ footer a:hover { color: var(--cyan); }
   color: var(--muted);
   margin: 0 0 14px;
 }
-.crumb a { color: var(--cyan); text-decoration: none; }
+.crumb a { color: var(--blue-hi); text-decoration: none; }
 .crumb a:hover { text-decoration: underline; }
 
 .updated {
@@ -691,15 +778,16 @@ footer a:hover { color: var(--cyan); }
   flex-wrap: wrap;
   margin: 22px 0 0;
 }
-.doc-links .btn { padding: 11px 20px; font-size: 12px; }
-.btn-quiet { color: var(--muted); }
+.doc-links .btn { --fw: 14px; padding: 11px 20px; font-size: 12px; }
+.btn-quiet { color: var(--muted); background: rgba(0, 118, 238, 0.03); }
+.btn-quiet::before { opacity: .38; }
 
 .foot-note {
   margin: 40px 0 0;
   color: var(--muted);
   font-size: 15px;
 }
-.foot-note a { color: var(--cyan); }
+.foot-note a { color: var(--blue-hi); }
 
 /* --- long-form copy (privacy) -------------------------------------------- */
 
@@ -711,17 +799,16 @@ footer a:hover { color: var(--cyan); }
   color: var(--text);
 }
 .prose p, .prose li { color: var(--muted); font-size: 16.5px; }
-.prose a { color: var(--cyan); }
+.prose a { color: var(--blue-hi); }
 .prose ul { padding-left: 22px; margin: 12px 0; }
 .prose li { margin-bottom: 9px; }
 .prose b { color: var(--text); }
 
 /* The summary box, so nobody has to read the whole thing to get the answer. */
 .callout {
-  border: 1px solid rgba(0, 240, 255, 0.28);
-  border-radius: var(--r);
-  background: linear-gradient(160deg, var(--panel), var(--navy));
-  padding: 24px 26px;
+  border: 0;
+  background: linear-gradient(160deg, var(--panel), var(--void));
+  padding: 34px 36px;
   margin: 0 0 10px;
 }
 .callout p { margin: 0; }

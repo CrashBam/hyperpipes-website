@@ -2,7 +2,12 @@
 <!-- Source for assets/img/social-card.png (the 1200x630 image link previews use).
      Re-render it after editing with:
        tools/render-card.sh
-     which screenshots this file headlessly in Chrome. -->
+     which screenshots this file headlessly in Chrome.
+
+     This is a 1200x630 plate, which is to say it IS a capsule — so it carries
+     the same double chamfered frame the Steam capsules do, and the same pipe.
+     The art is the hero's geometry reused at a wider crop; the craft are
+     placed statically, since a link preview never animates. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -11,7 +16,7 @@
   @font-face { font-family: "Exo2";     src: url("../assets/fonts/Exo2.ttf");     font-weight: 300 700; }
 
   * { margin: 0; box-sizing: border-box; }
-  body { width: 1200px; height: 630px; overflow: hidden; background: #05060f; }
+  body { width: 1200px; height: 630px; overflow: hidden; background: #000208; }
 
   .card {
     position: relative;
@@ -19,68 +24,158 @@
     display: grid; place-content: center; justify-items: center;
     text-align: center;
     font-family: "Exo2", sans-serif;
-    color: #e6ebff;
+    color: #e8f4ff;
   }
   .art { position: absolute; inset: 0; }
   .art::after {
     content: "";
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 44%, transparent 0%, rgba(5,6,15,.6) 52%, #05060f 86%);
+    background: radial-gradient(ellipse 52% 44% at 50% 50%,
+      rgba(0,2,8,.88) 0%, rgba(0,2,8,.58) 54%, transparent 100%);
   }
-  .inner { position: relative; z-index: 1; }
+  .frame { position: absolute; inset: 0; z-index: 2; }
+  .inner { position: relative; z-index: 3; }
 
   h1 {
     font-family: "Orbitron", sans-serif;
-    font-size: 132px; font-weight: 900;
+    font-size: 128px; font-weight: 900; font-style: italic;
     letter-spacing: .02em; text-transform: uppercase; line-height: 1;
-    background: linear-gradient(100deg, #00f0ff, #a44dff 55%, #ff2e88);
-    -webkit-background-clip: text; color: transparent;
-    filter: drop-shadow(0 0 40px rgba(0,240,255,.3));
+    color: #ccf7ff;
+    text-shadow:
+      -0.018em 0 0 #0076ee,  0.018em 0 0 #0076ee,
+       0 -0.018em 0 #0076ee, 0 0.018em 0 #0076ee,
+      -0.014em -0.014em 0 #0076ee,  0.014em -0.014em 0 #0076ee,
+      -0.014em  0.014em 0 #0076ee,  0.014em  0.014em 0 #0076ee,
+       0 0 0.2em rgba(0,118,238,.65), 0 0 0.55em rgba(0,118,238,.35);
   }
   .tag {
     font-family: "Orbitron", sans-serif;
     font-size: 25px; letter-spacing: .3em; text-transform: uppercase;
-    margin-top: 20px; opacity: .9;
+    margin-top: 22px; opacity: .9;
   }
   .foot {
-    position: absolute; z-index: 1; bottom: 42px; left: 0; right: 0;
+    position: absolute; z-index: 3; bottom: 44px; left: 0; right: 0;
     font-family: "Orbitron", sans-serif;
     font-size: 15px; letter-spacing: .26em; text-transform: uppercase;
-    color: #8f98c4; text-align: center;
+    color: #7f93ad; text-align: center;
   }
 </style>
 </head>
 <body>
 <div class="card">
   <div class="art">
-    <svg viewBox="0 0 1200 630" width="1200" height="630" preserveAspectRatio="xMidYMid slice">
+    <svg viewBox="0 0 1200 800" width="1200" height="630" preserveAspectRatio="xMidYMid slice">
       <defs>
-        <linearGradient id="n" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#00f0ff"/><stop offset="50%" stop-color="#a44dff"/>
-          <stop offset="100%" stop-color="#ff2e88"/>
+        <linearGradient id="tubeFill" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stop-color="#16273f"/><stop offset="45%" stop-color="#0a1526"/>
+          <stop offset="100%" stop-color="#03080f"/>
         </linearGradient>
-        <radialGradient id="c" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#7fe9ff" stop-opacity=".45"/>
-          <stop offset="100%" stop-color="#7fe9ff" stop-opacity="0"/>
+        <linearGradient id="rimLight" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stop-color="#e4f7ff"/><stop offset="38%" stop-color="#4fb9ff"/>
+          <stop offset="100%" stop-color="#0076ee" stop-opacity=".45"/>
+        </linearGradient>
+        <linearGradient id="ringRed" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stop-color="#ff4a20"/><stop offset="55%" stop-color="#ff1000"/>
+          <stop offset="100%" stop-color="#b80a00"/>
+        </linearGradient>
+        <radialGradient id="haze" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#0076ee" stop-opacity=".20"/>
+          <stop offset="60%" stop-color="#0076ee" stop-opacity=".07"/>
+          <stop offset="100%" stop-color="#0076ee" stop-opacity="0"/>
         </radialGradient>
+        <linearGradient id="trailA" x1="1" y1="0" x2="0" y2="0">
+          <stop offset="0%" stop-color="#a9e6ff" stop-opacity=".85"/>
+          <stop offset="100%" stop-color="#a9e6ff" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="trailB" x1="1" y1="0" x2="0" y2="0">
+          <stop offset="0%" stop-color="#ff5a2c" stop-opacity=".85"/>
+          <stop offset="100%" stop-color="#ff5a2c" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="thrustA" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#f2fdff"/>
+          <stop offset="45%" stop-color="#4fb9ff" stop-opacity=".8"/>
+          <stop offset="100%" stop-color="#0076ee" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="thrustB" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffe4d6"/>
+          <stop offset="45%" stop-color="#ff4a20" stop-opacity=".85"/>
+          <stop offset="100%" stop-color="#ff1000" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="bloom" x="-15%" y="-15%" width="130%" height="130%">
+          <feGaussianBlur stdDeviation="7" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <g id="craftA" transform="scale(1.45)">
+          <path d="M-13 -4L-96 -1.2L-96 1.2L-13 4Z" fill="url(#trailA)"/>
+          <ellipse cx="-16" cy="0" rx="22" ry="7" fill="url(#thrustA)" opacity=".5"/>
+          <ellipse cx="-13" cy="0" rx="12" ry="5.4" fill="url(#thrustA)"/>
+          <path d="M18 0L-4 -7.5L-12 -4L-12 4L-4 7.5Z" fill="#e8f7ff"/>
+          <path d="M18 0L-4 7.5L-12 4L-12 0Z" fill="#6ea8d6"/>
+          <path d="M8 0L0 -2.8L0 2.8Z" fill="#08243f"/>
+        </g>
+        <g id="craftB" transform="scale(1.45)">
+          <path d="M-13 -4L-96 -1.2L-96 1.2L-13 4Z" fill="url(#trailB)"/>
+          <ellipse cx="-16" cy="0" rx="22" ry="7" fill="url(#thrustB)" opacity=".5"/>
+          <ellipse cx="-13" cy="0" rx="12" ry="5.4" fill="url(#thrustB)"/>
+          <path d="M18 0L-4 -7.5L-12 -4L-12 4L-4 7.5Z" fill="#dfe9f2"/>
+          <path d="M18 0L-4 7.5L-12 4L-12 0Z" fill="#8a5a52"/>
+          <path d="M8 0L0 -2.8L0 2.8Z" fill="#3a0c04"/>
+        </g>
       </defs>
-      <circle cx="600" cy="278" r="300" fill="url(#c)"/>
-      <g fill="none" stroke="url(#n)">
-        <circle cx="600" cy="278" r="70"  stroke-width="2"   opacity=".9"/>
-        <circle cx="600" cy="278" r="132" stroke-width="2.8" opacity=".8"/>
-        <circle cx="600" cy="278" r="212" stroke-width="3.6" opacity=".65"/>
-        <circle cx="600" cy="278" r="312" stroke-width="4.6" opacity=".45"/>
-        <circle cx="600" cy="278" r="432" stroke-width="6"   opacity=".28"/>
-      </g>
+
       <g fill="#fff">
-        <circle cx="150" cy="90"  r="2.4" opacity=".8"/>
-        <circle cx="1040" cy="70" r="2"   opacity=".6"/>
-        <circle cx="1120" cy="380" r="2.6" opacity=".7"/>
-        <circle cx="80"  cy="430" r="2"   opacity=".55"/>
-        <circle cx="900" cy="560" r="2.2" opacity=".6"/>
+        <circle cx="150" cy="90" r="2.4" opacity=".8"/><circle cx="1040" cy="70" r="2" opacity=".6"/>
+        <circle cx="1120" cy="380" r="2.6" opacity=".7"/><circle cx="80" cy="430" r="2" opacity=".55"/>
+        <circle cx="900" cy="560" r="2.2" opacity=".6"/><circle cx="430" cy="120" r="1.8" opacity=".5"/>
+        <circle cx="700" cy="150" r="1.5" opacity=".45"/><circle cx="990" cy="230" r="1.6" opacity=".7"/>
+        <circle cx="260" cy="300" r="1.4" opacity=".5"/><circle cx="1160" cy="140" r="1.8" opacity=".6"/>
       </g>
+
+      <ellipse cx="330" cy="600" rx="620" ry="470" fill="url(#haze)"/>
+
+      <path d="M -180 700 C 60 470 240 330 560 262 C 860 190 1060 140 1320 96 L 1320 132 C 1110 215 930 315 690 455 C 450 600 280 790 60 1000 Z" fill="url(#tubeFill)"/>
+
+      <g filter="url(#bloom)">
+        <g fill="none" stroke="url(#ringRed)" stroke-linecap="round">
+          <path d="M -180 700 Q -143.2 929.7 60 1000" stroke-width="4.2" opacity="0.92"/>
+          <path d="M 5.1 533.2 Q 30.1 755.7 229.5 834.9" stroke-width="3.72" opacity="0.87"/>
+          <path d="M 173.2 412 Q 187 606.7 379 692.6" stroke-width="3.29" opacity="0.83"/>
+          <path d="M 341.7 327.3 Q 346.5 483.9 520.1 572.7" stroke-width="2.91" opacity="0.78"/>
+          <path d="M 519.8 271.1 Q 517.8 389.7 659.6 473.8" stroke-width="2.57" opacity="0.73"/>
+          <path d="M 685.9 231.7 Q 681.8 327.6 791.9 396" stroke-width="2.26" opacity="0.69"/>
+          <path d="M 819.4 199.9 Q 814.9 277.6 902.3 333.6" stroke-width="2.0" opacity="0.64"/>
+          <path d="M 930.3 174.1 Q 925.7 237 995.4 283.1" stroke-width="1.78" opacity="0.6"/>
+          <path d="M 1024 153.3 Q 1019.2 204.3 1074.5 242.3" stroke-width="1.59" opacity="0.56"/>
+          <path d="M 1103.6 136.5 Q 1098.3 178 1141.5 209.6" stroke-width="1.44" opacity="0.52"/>
+          <path d="M 1170.6 123.1 Q 1164.5 157.2 1197.4 183.8" stroke-width="1.32" opacity="0.47"/>
+          <path d="M 1225.3 112.8 Q 1218.1 141.3 1242.7 163.9" stroke-width="1.23" opacity="0.43"/>
+          <path d="M 1267.7 105.1 Q 1259.2 129.5 1277.5 149.2" stroke-width="1.16" opacity="0.4"/>
+        </g>
+        <g fill="none" stroke="url(#ringRed)" stroke-linecap="round">
+          <path d="M -134.9 836.9 C -116.3 819 -59.7 763.6 -23.2 729.2 C 13.2 694.8 48 662 83.8 630.6 C 119.6 599.2 154.5 569.2 191.5 541 C 228.5 512.7 265.6 485.8 305.6 461 C 345.6 436.1 386.7 412.7 431.5 391.6 C 476.3 370.6 527.5 352 574.5 334.8 C 621.4 317.5 668.7 303 713.1 288.2 C 757.4 273.3 799.2 259.3 840.4 245.8 C 881.6 232.3 920.9 219.5 960.4 207.2 C 999.8 194.9 1038.1 183.2 1077 171.8 C 1116 160.5 1154.4 149.7 1194.2 139.3 C 1233.9 128.8 1295.1 114.1 1315.3 109" stroke-width="3.4" opacity="0.95"/>
+          <path d="M -32.7 951.1 C -14.7 933.5 40.1 879.7 75.3 845.4 C 110.5 811 144.1 777.4 178.4 744.9 C 212.7 712.3 246.2 680.5 281.1 650 C 316 619.5 350.8 589.8 387.8 561.7 C 424.9 533.6 462.6 506.4 503.2 481.3 C 543.8 456.1 588.9 432.4 631.5 410.8 C 674 389.1 717.6 370.3 758.4 351.4 C 799.1 332.5 837.8 314.6 876 297.3 C 914.2 280.1 950.8 263.8 987.5 248.1 C 1024.2 232.3 1059.8 217.4 1096 203 C 1132.2 188.6 1167.9 174.9 1204.6 161.6 C 1241.3 148.3 1297.5 129.7 1316.1 123.3" stroke-width="2.4" opacity="0.7"/>
+        </g>
+        <g fill="none" stroke="url(#rimLight)" stroke-linecap="round">
+          <path d="M -180 700 C 60 470 240 330 560 262 C 860 190 1060 140 1320 96" stroke-width="9" opacity=".16"/>
+          <path d="M -180 700 C 60 470 240 330 560 262 C 860 190 1060 140 1320 96" stroke-width="2.8"/>
+          <path d="M 60 1000 C 280 790 450 600 690 455 C 930 315 1110 215 1320 132" stroke-width="7" opacity=".12"/>
+          <path d="M 60 1000 C 280 790 450 600 690 455 C 930 315 1110 215 1320 132" stroke-width="1.9" opacity=".75"/>
+        </g>
+      </g>
+
+      <!-- craft parked on the lane, at points computed off the pipe's own crown -->
+      <g transform="translate(87 459) rotate(-35.7) scale(1.35)"><use href="#craftA"/></g>
+      <g transform="translate(358 388) rotate(-23.1) scale(0.95)"><use href="#craftB"/></g>
+      <g transform="translate(594 248) rotate(-13.5) scale(0.6)"><use href="#craftA"/></g>
+      <g transform="translate(840 226) rotate(-13.3) scale(0.42)"><use href="#craftB"/></g>
     </svg>
   </div>
+
+  <!-- the capsule frame, at the same proportions as the Steam art -->
+  <svg class="frame" viewBox="0 0 1200 630" width="1200" height="630" fill="none">
+    <path d="M8 38L38 8H1162L1192 38V592L1162 622H38L8 592Z" stroke="#ccf7ff" stroke-width="3"/>
+    <path d="M22 48L48 22H1152L1178 48V582L1152 608H48L22 582Z" stroke="#0076ee" stroke-width="2"/>
+  </svg>
 
   <div class="inner">
     <h1>HyperPipes</h1>

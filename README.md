@@ -87,7 +87,7 @@ sips -Z 1600 screenshots/*.png          # cap the long edge at 1600px
 | Path | What it is |
 | --- | --- |
 | `index.html` | The whole page — every section, and the `SHOTS` list at the bottom |
-| `assets/css/style.css` | All styling. Brand colours are the `--cyan` / `--purple` / `--pink` variables at the top |
+| `assets/css/style.css` | All styling. Colours are the `--ice` / `--blue` / `--red` variables at the top, and the chamfered frame is the `--frame` SVG beside them |
 | `assets/fonts/` | Orbitron and Exo 2, bundled so the site loads fast and looks right offline (OFL licence included) |
 | `assets/img/icon.svg` | The game's app icon — used as the favicon and the logo |
 | `assets/img/social-card.png` | The preview image shown when someone pastes the link into Discord, X or iMessage |
@@ -102,4 +102,12 @@ Everything is one file. Open `index.html` and look for the big comment banners
 wording is ordinary HTML between the tags — change it, save, refresh the browser.
 
 Colours live in one place: the `:root { ... }` block at the top of
-`assets/css/style.css`. Change `--cyan` and the whole site follows.
+`assets/css/style.css`. They were sampled straight off the Steam capsule PNGs —
+`--ice` and `--blue` are the two lines of the frame, `--red` is the pipe's rings
+— so changing one there changes it everywhere on the site.
+
+The border style is one thing too: `--frame` holds a small inline SVG of the
+double cut-corner outline, and `border-image` stretches it onto any box. To put
+that frame on something new, add its selector to the two lists under
+`--- the capsule frame ---`. `--fw` sets how big the corner cuts are, so small
+controls (buttons, badges) turn it down.
