@@ -179,79 +179,93 @@
       </g>
       </g>
 
-      <!-- the craft. Each rides a lane computed off the pipe's own crown, and
-           shrinks as it goes so the pipe reads as genuinely receding. -->
+      <!-- The craft. Both the progress along the lane and the size are 18-stop
+           curves generated from the tube's own geometry: at each stop the scale
+           is the tube's width THERE over its width at the near end, so a craft
+           shrinks at exactly the rate the pipe it is sitting on does. Four
+           hand-picked stops could not hold that, and the mismatch was what read
+           as the motion stuttering. -->
       <g>
-        <animateMotion dur="9s" begin="-0.5s" repeatCount="indefinite" rotate="auto" calcMode="linear" keyTimes="0;1" keyPoints="0;0.84"
+        <animateMotion dur="9s" begin="-0.5s" repeatCount="indefinite" rotate="auto" calcMode="linear"
+          keyTimes="0;0.0588;0.1176;0.1765;0.2353;0.2941;0.3529;0.4118;0.4706;0.5294;0.5882;0.6471;0.7059;0.7647;0.8235;0.8824;0.9412;1"
+          keyPoints="0;0.0676;0.1337;0.1983;0.2613;0.3226;0.3822;0.4399;0.4956;0.5491;0.6004;0.6492;0.6952;0.7381;0.7773;0.8122;0.8412;0.86"
           path="M -186.9 692.8 C -163.7 671.6 -93.3 604.6 -47.7 565.7 C -2 526.7 41.3 491.3 87 459.1 C 132.8 426.9 177.8 398.2 226.7 372.5 C 275.7 346.8 325.5 324.4 380.8 305 C 436.1 285.6 500.7 270.8 558.5 255.9 C 616.4 241.1 674.2 228.5 728 216 C 781.8 203.4 831.5 191.7 881.2 180.5 C 930.8 169.3 977.7 158.9 1025.7 148.8 C 1073.7 138.7 1120.3 129.3 1169.3 120.1 C 1218.3 110.8 1294.5 98 1319.6 93.5"/>
         <g opacity="0">
           <animate attributeName="opacity" dur="9s" begin="-0.5s" repeatCount="indefinite"
-                   values="0;1;1;0" keyTimes="0;0.05;0.82;1"/>
+                   values="0;1;1;0" keyTimes="0;0.04;0.72;1"/>
           <g>
             <animateTransform attributeName="transform" type="scale" dur="9s" begin="-0.5s"
-                              repeatCount="indefinite" values="2.0;1.15;0.62;0.34"
-                              keyTimes="0;0.3;0.62;1"/>
+                              repeatCount="indefinite" calcMode="linear"
+                              keyTimes="0;0.0588;0.1176;0.1765;0.2353;0.2941;0.3529;0.4118;0.4706;0.5294;0.5882;0.6471;0.7059;0.7647;0.8235;0.8824;0.9412;1"
+                              values="1.5;1.497;1.477;1.437;1.377;1.297;1.201;1.094;0.981;0.872;0.777;0.688;0.607;0.532;0.466;0.409;0.362;0.332"/>
             <use href="#craftA"/>
           </g>
         </g>
       </g>
-
       <g>
-        <animateMotion dur="11.5s" begin="-5.5s" repeatCount="indefinite" rotate="auto" calcMode="linear" keyTimes="0;1" keyPoints="0;0.80"
+        <animateMotion dur="11.5s" begin="-5.5s" repeatCount="indefinite" rotate="auto" calcMode="linear"
+          keyTimes="0;0.0588;0.1176;0.1765;0.2353;0.2941;0.3529;0.4118;0.4706;0.5294;0.5882;0.6471;0.7059;0.7647;0.8235;0.8824;0.9412;1"
+          keyPoints="0;0.0676;0.1337;0.1983;0.2613;0.3226;0.3822;0.4399;0.4956;0.5491;0.6004;0.6492;0.6952;0.7381;0.7773;0.8122;0.8412;0.86"
           path="M -186.9 692.8 C -163.7 671.6 -93.3 604.6 -47.7 565.7 C -2 526.7 41.3 491.3 87 459.1 C 132.8 426.9 177.8 398.2 226.7 372.5 C 275.7 346.8 325.5 324.4 380.8 305 C 436.1 285.6 500.7 270.8 558.5 255.9 C 616.4 241.1 674.2 228.5 728 216 C 781.8 203.4 831.5 191.7 881.2 180.5 C 930.8 169.3 977.7 158.9 1025.7 148.8 C 1073.7 138.7 1120.3 129.3 1169.3 120.1 C 1218.3 110.8 1294.5 98 1319.6 93.5"/>
         <g opacity="0">
           <animate attributeName="opacity" dur="11.5s" begin="-5.5s" repeatCount="indefinite"
-                   values="0;1;1;0" keyTimes="0;0.05;0.82;1"/>
+                   values="0;1;1;0" keyTimes="0;0.04;0.72;1"/>
           <g>
             <animateTransform attributeName="transform" type="scale" dur="11.5s" begin="-5.5s"
-                              repeatCount="indefinite" values="1.8;1.05;0.56;0.30"
-                              keyTimes="0;0.3;0.62;1"/>
+                              repeatCount="indefinite" calcMode="linear"
+                              keyTimes="0;0.0588;0.1176;0.1765;0.2353;0.2941;0.3529;0.4118;0.4706;0.5294;0.5882;0.6471;0.7059;0.7647;0.8235;0.8824;0.9412;1"
+                              values="1.35;1.347;1.329;1.293;1.239;1.167;1.081;0.985;0.883;0.785;0.7;0.62;0.546;0.479;0.42;0.368;0.326;0.299"/>
             <use href="#craftB"/>
           </g>
         </g>
       </g>
-
       <g>
-        <animateMotion dur="10.2s" begin="-3.2s" repeatCount="indefinite" rotate="auto" calcMode="linear" keyTimes="0;1" keyPoints="0;0.86"
+        <animateMotion dur="10.2s" begin="-3.2s" repeatCount="indefinite" rotate="auto" calcMode="linear"
+          keyTimes="0;0.0588;0.1176;0.1765;0.2353;0.2941;0.3529;0.4118;0.4706;0.5294;0.5882;0.6471;0.7059;0.7647;0.8235;0.8824;0.9412;1"
+          keyPoints="0;0.0676;0.1337;0.1983;0.2613;0.3226;0.3822;0.4399;0.4956;0.5491;0.6004;0.6492;0.6952;0.7381;0.7773;0.8122;0.8412;0.86"
           path="M -130.7 762.4 C -107.9 741.3 -39 675.2 5.6 636 C 50.3 596.8 92.6 560.6 137 527.1 C 181.4 493.6 224.9 463.1 272 435.2 C 319.1 407.4 366.8 382.4 419.5 360.1 C 472.1 337.8 532.7 319.3 587.9 301.4 C 643 283.5 698.6 268 750.3 252.6 C 801.9 237.2 849.9 222.9 897.7 209.1 C 945.5 195.4 990.8 182.6 1037.2 170.2 C 1083.5 157.9 1128.4 146.3 1175.5 135 C 1222.6 123.8 1295.7 108.1 1319.8 102.7"/>
         <g opacity="0">
           <animate attributeName="opacity" dur="10.2s" begin="-3.2s" repeatCount="indefinite"
-                   values="0;1;1;0" keyTimes="0;0.05;0.82;1"/>
+                   values="0;1;1;0" keyTimes="0;0.04;0.72;1"/>
           <g>
             <animateTransform attributeName="transform" type="scale" dur="10.2s" begin="-3.2s"
-                              repeatCount="indefinite" values="1.7;0.98;0.54;0.29"
-                              keyTimes="0;0.3;0.62;1"/>
+                              repeatCount="indefinite" calcMode="linear"
+                              keyTimes="0;0.0588;0.1176;0.1765;0.2353;0.2941;0.3529;0.4118;0.4706;0.5294;0.5882;0.6471;0.7059;0.7647;0.8235;0.8824;0.9412;1"
+                              values="1.3;1.297;1.28;1.247;1.196;1.128;1.046;0.955;0.856;0.76;0.677;0.6;0.528;0.464;0.406;0.356;0.316;0.29"/>
             <use href="#craftA"/>
           </g>
         </g>
       </g>
-
       <g>
-        <animateMotion dur="13s" begin="-8.6s" repeatCount="indefinite" rotate="auto" calcMode="linear" keyTimes="0;1" keyPoints="0;0.78"
+        <animateMotion dur="13s" begin="-8.6s" repeatCount="indefinite" rotate="auto" calcMode="linear"
+          keyTimes="0;0.0588;0.1176;0.1765;0.2353;0.2941;0.3529;0.4118;0.4706;0.5294;0.5882;0.6471;0.7059;0.7647;0.8235;0.8824;0.9412;1"
+          keyPoints="0;0.0676;0.1337;0.1983;0.2613;0.3226;0.3822;0.4399;0.4956;0.5491;0.6004;0.6492;0.6952;0.7381;0.7773;0.8122;0.8412;0.86"
           path="M -130.7 762.4 C -107.9 741.3 -39 675.2 5.6 636 C 50.3 596.8 92.6 560.6 137 527.1 C 181.4 493.6 224.9 463.1 272 435.2 C 319.1 407.4 366.8 382.4 419.5 360.1 C 472.1 337.8 532.7 319.3 587.9 301.4 C 643 283.5 698.6 268 750.3 252.6 C 801.9 237.2 849.9 222.9 897.7 209.1 C 945.5 195.4 990.8 182.6 1037.2 170.2 C 1083.5 157.9 1128.4 146.3 1175.5 135 C 1222.6 123.8 1295.7 108.1 1319.8 102.7"/>
         <g opacity="0">
           <animate attributeName="opacity" dur="13s" begin="-8.6s" repeatCount="indefinite"
-                   values="0;1;1;0" keyTimes="0;0.05;0.82;1"/>
+                   values="0;1;1;0" keyTimes="0;0.04;0.72;1"/>
           <g>
             <animateTransform attributeName="transform" type="scale" dur="13s" begin="-8.6s"
-                              repeatCount="indefinite" values="1.55;0.9;0.48;0.26"
-                              keyTimes="0;0.3;0.62;1"/>
+                              repeatCount="indefinite" calcMode="linear"
+                              keyTimes="0;0.0588;0.1176;0.1765;0.2353;0.2941;0.3529;0.4118;0.4706;0.5294;0.5882;0.6471;0.7059;0.7647;0.8235;0.8824;0.9412;1"
+                              values="1.2;1.197;1.182;1.151;1.104;1.042;0.966;0.881;0.79;0.701;0.625;0.554;0.488;0.428;0.375;0.329;0.291;0.267"/>
             <use href="#craftB"/>
           </g>
         </g>
       </g>
-      <!-- a fifth craft, timed into the gap the other four leave on the near
-           straight — with four alone the pipe reads as empty every few seconds -->
       <g>
-        <animateMotion dur="8s" begin="-6.2s" repeatCount="indefinite" rotate="auto" calcMode="linear" keyTimes="0;1" keyPoints="0;0.82"
+        <animateMotion dur="8s" begin="-6.2s" repeatCount="indefinite" rotate="auto" calcMode="linear"
+          keyTimes="0;0.0588;0.1176;0.1765;0.2353;0.2941;0.3529;0.4118;0.4706;0.5294;0.5882;0.6471;0.7059;0.7647;0.8235;0.8824;0.9412;1"
+          keyPoints="0;0.0676;0.1337;0.1983;0.2613;0.3226;0.3822;0.4399;0.4956;0.5491;0.6004;0.6492;0.6952;0.7381;0.7773;0.8122;0.8412;0.86"
           path="M -186.9 692.8 C -163.7 671.6 -93.3 604.6 -47.7 565.7 C -2 526.7 41.3 491.3 87 459.1 C 132.8 426.9 177.8 398.2 226.7 372.5 C 275.7 346.8 325.5 324.4 380.8 305 C 436.1 285.6 500.7 270.8 558.5 255.9 C 616.4 241.1 674.2 228.5 728 216 C 781.8 203.4 831.5 191.7 881.2 180.5 C 930.8 169.3 977.7 158.9 1025.7 148.8 C 1073.7 138.7 1120.3 129.3 1169.3 120.1 C 1218.3 110.8 1294.5 98 1319.6 93.5"/>
         <g opacity="0">
           <animate attributeName="opacity" dur="8s" begin="-6.2s" repeatCount="indefinite"
-                   values="0;1;1;0" keyTimes="0;0.05;0.82;1"/>
+                   values="0;1;1;0" keyTimes="0;0.04;0.72;1"/>
           <g>
             <animateTransform attributeName="transform" type="scale" dur="8s" begin="-6.2s"
-                              repeatCount="indefinite" values="1.85;1.1;0.58;0.32"
-                              keyTimes="0;0.3;0.62;1"/>
+                              repeatCount="indefinite" calcMode="linear"
+                              keyTimes="0;0.0588;0.1176;0.1765;0.2353;0.2941;0.3529;0.4118;0.4706;0.5294;0.5882;0.6471;0.7059;0.7647;0.8235;0.8824;0.9412;1"
+                              values="1.4;1.397;1.378;1.341;1.285;1.21;1.121;1.021;0.916;0.814;0.725;0.643;0.566;0.497;0.435;0.381;0.338;0.31"/>
             <use href="#craftA"/>
           </g>
         </g>
