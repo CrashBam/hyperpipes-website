@@ -138,7 +138,15 @@ img, svg { max-width: 100%; display: block; }
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  border: 26px solid transparent;
+  /* The border WIDTH has to follow --fw, not sit at a hard 26px.
+     --fw was always the lever for small controls, but it only ever set
+     border-image-width; the border box itself stayed 26px on every side. On
+     anything shorter than 52px that is over-constrained — 26 top + 26 bottom
+     against a 42px button — and the browser drops the BOTTOM edge, leaving the
+     frame drawn as an open-ended bracket. Every small button on the site was
+     missing its bottom line (David spotted it on the manuals page, 2026-08-19).
+     Big framed things default --fw to 26px, so nothing about them changes. */
+  border: var(--fw) solid transparent;
   border-image: var(--frame) 26 / var(--fw) stretch;
   opacity: .62;
   transition: opacity .22s ease;
