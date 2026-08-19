@@ -272,6 +272,8 @@ section { position: relative; padding: 96px 0; }
 }
 .nav a:hover { color: #fff; }
 .nav .btn { --fw: 14px; padding: 11px 22px; font-size: 11px; }
+.nav .btn svg { width: 15px; height: 15px; }
+.nav-wishlist { gap: 8px; }
 
 /* --- hero ---------------------------------------------------------------- */
 
@@ -718,6 +720,9 @@ footer a:hover { color: var(--blue-hi); }
   .card { padding: 32px 28px 34px; }
   .nav { gap: 18px; }
   .nav a:not(.btn) { display: none; }
+  /* two buttons is one too many once the links collapse: the wishlist is the
+     one worth the width, and "Report a bug" still lives in the footer band */
+  .nav .nav-bug { display: none; }
   section { padding: 72px 0; }
   /* the frame's cut corners are a fixed size, so on small boxes it has to
      shrink with them or the diagonals eat the content */

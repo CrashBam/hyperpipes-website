@@ -33,7 +33,15 @@
       <a href="#online">Online</a>
       <a href="#media">Media</a>
       <a href="manual/">Manuals</a>
-      <a class="btn" href="https://github.com/CrashBam/hyperpipes-bugs/issues/new/choose" target="_blank" rel="noopener">Report a bug</a>
+      <a class="btn btn-quiet nav-bug" href="https://github.com/CrashBam/hyperpipes-bugs/issues/new/choose" target="_blank" rel="noopener">Report a bug</a>
+      <a class="btn btn-primary nav-wishlist" href="https://store.steampowered.com/app/5009100/HYPERPIPES/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2a10 10 0 0 0-9.96 9.2l5.34 2.21a2.82 2.82 0 0 1 1.6-.49l2.37-3.44v-.05a3.76 3.76 0 1 1 3.76 3.76h-.09l-3.38 2.41c0 .07.01.14.01.2a2.83 2.83 0 0 1-5.61.55l-3.8-1.58A10 10 0 1 0 12 2Z"/>
+          <path d="m6.23 17.62-1.22-.5a2.13 2.13 0 1 0 2.7-3.01l1.26.52a1.57 1.57 0 1 1-1.2 2.9Z"/>
+          <path d="M15.06 6.3a3.14 3.14 0 1 0 0 6.27 3.14 3.14 0 0 0 0-6.27Zm0 5.64a2.51 2.51 0 1 1 0-5.02 2.51 2.51 0 0 1 0 5.02Z"/>
+        </svg>
+        <span>Wishlist</span>
+      </a>
     </nav>
   </div>
 </header>
@@ -284,7 +292,18 @@
       around the side is how you pass.
     </p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="#media">
+      <!-- The one red thing on the page is the thing we most want pressed, and
+           right now that is the wishlist — see the .btn-primary note in style.css.
+           "See the game" gave the red up rather than competing with it. -->
+      <a class="btn btn-primary" href="https://store.steampowered.com/app/5009100/HYPERPIPES/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2a10 10 0 0 0-9.96 9.2l5.34 2.21a2.82 2.82 0 0 1 1.6-.49l2.37-3.44v-.05a3.76 3.76 0 1 1 3.76 3.76h-.09l-3.38 2.41c0 .07.01.14.01.2a2.83 2.83 0 0 1-5.61.55l-3.8-1.58A10 10 0 1 0 12 2Z"/>
+          <path d="m6.23 17.62-1.22-.5a2.13 2.13 0 1 0 2.7-3.01l1.26.52a1.57 1.57 0 1 1-1.2 2.9Z"/>
+          <path d="M15.06 6.3a3.14 3.14 0 1 0 0 6.27 3.14 3.14 0 0 0 0-6.27Zm0 5.64a2.51 2.51 0 1 1 0-5.02 2.51 2.51 0 0 1 0 5.02Z"/>
+        </svg>
+        Wishlist on Steam
+      </a>
+      <a class="btn" href="#media">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
         See the game
       </a>
