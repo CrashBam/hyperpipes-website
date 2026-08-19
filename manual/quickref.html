@@ -41,14 +41,14 @@
 <thead><tr><th style="width:28%">Action</th><th style="width:26%">Keyboard</th><th style="width:23%">Xbox</th><th style="width:23%">PlayStation</th></tr></thead>
 <tr><td>Accelerate</td><td class="key">W &middot; UP</td><td class="key">RT</td><td class="key">R2</td></tr>
 <tr><td>Brake</td><td class="key">S &middot; DOWN</td><td class="key">B &middot; LT</td><td class="key">CIRCLE &middot; L2</td></tr>
-<tr><td>Steer Left</td><td class="key">A &middot; LEFT</td><td class="key">DPAD ◀</td><td class="key">DPAD ◀</td></tr>
+<tr><td>Steer Left</td><td class="key">A &middot; LEFT</td><td class="key">Left Stick</td><td class="key">Left Stick</td></tr>
 <tr><td>Boost</td><td class="key">SHIFT</td><td class="key">Y</td><td class="key">TRIANGLE</td></tr>
 <tr><td>Fire</td><td class="key">SPACE</td><td class="key">A &middot; RB</td><td class="key">CROSS &middot; R1</td></tr>
 <tr><td>Use Item</td><td class="key">X</td><td class="key">X</td><td class="key">SQUARE</td></tr>
 <tr><td>Target Next</td><td class="key">E</td><td class="key">LB</td><td class="key">L1</td></tr>
-<tr><td>Camera View</td><td class="key">C</td><td class="key">L3</td><td class="key">L3</td></tr>
+<tr><td>Camera View</td><td class="key">C</td><td class="key">SELECT</td><td class="key">SHARE</td></tr>
 <tr><td>Screenshot</td><td class="key">F2</td><td class="key">R3</td><td class="key">R3</td></tr>
-<tr><td>Hide HUD</td><td class="key">H</td><td class="key">SELECT</td><td class="key">SHARE</td></tr>
+<tr><td>Hide HUD</td><td class="key">H</td><td class="key">&mdash;</td><td class="key">&mdash;</td></tr>
 <tr><td>Pause</td><td class="key">ESCAPE &middot; P</td><td class="key">START</td><td class="key">OPTIONS</td></tr>
 </table>
 <!-- END:bindings_quick -->
@@ -60,9 +60,13 @@
 			<h3>Boost</h3>
 			<p class="tight">The meter under EARNINGS refills on its own. When it
 			reads BOOST READY, spending it empties it and it starts again.</p>
+			<p class="tight"><strong>It fills 2.5&times; faster on the crest than on
+			the underside.</strong> Gravity puts you underneath; staying up top is
+			what pays for it.</p>
 			<table>
-				<tr><td>Easy</td><td class="num">refills in ~4s</td></tr>
-				<tr><td>Hard</td><td class="num">refills in ~11s</td></tr>
+				<thead><tr><th></th><th class="num">Crest</th><th class="num">Underside</th></tr></thead>
+				<tr><td>Easy</td><td class="num">~4s</td><td class="num">~10s</td></tr>
+				<tr><td>Hard</td><td class="num">~11s</td><td class="num">~27s</td></tr>
 			</table>
 			<p class="tight"><strong>The AI never get a boost meter.</strong> It is
 			your single biggest advantage, and it stops refilling the moment it is
@@ -90,6 +94,16 @@
 			</table>
 			<p class="tight" style="font-size:8pt;color:#5d6a74">Driving over a second
 			item swaps it for the one you are holding.</p>
+		</section>
+
+		<section>
+			<h3>The firewall</h3>
+			<p class="tight">Lead by too much and a wall of fire is sent up the track
+			to meet you head-on. <strong>It cannot be dodged &mdash; shoot it.</strong>
+			Two hits on the gentlest INTENSITY, five on the hardest.</p>
+			<p class="tight" style="font-size:8pt;color:#5d6a74">The screen edges glow
+			red as it closes. Out of ammo? Crates are placed ahead of it &mdash;
+			guaranteed, and one is enough. It is never sent on the run to the flag.</p>
 		</section>
 
 	</div>
@@ -153,12 +167,15 @@
 
 		<section>
 			<h3>Race Lab</h3>
-			<p class="tight">Build your own: seed, place, intensity, format, pipe
-			width, track shape, twists, laps and livery. Keepers save to My Tracks and
-			can be strung into your own grand prix.</p>
-			<p class="tight" style="font-size:8pt;color:#5d6a74">A seed alone does not
-			reproduce a circuit &mdash; the pipe and track dials change what it builds.
-			Share every dial.</p>
+			<p class="tight">Build your own: seed, then WHERE, SKY, RACE TYPE,
+			INTENSITY, PIPE, TRACK, TWISTS, COLOUR, FINISH and LAPS. Keepers save to
+			My Tracks and can be strung into your own grand prix.</p>
+			<p class="tight"><strong>Share the 16-character TRACK CODE, not the
+			seed.</strong> The code carries every dial; a seed alone leaves the other
+			player's dials where they were.</p>
+			<p class="tight" style="font-size:8pt;color:#5d6a74">A code holding a
+			RANDOM dial cannot promise the same race &mdash; RANDOM is rolled at the
+			start line, not from the seed.</p>
 		</section>
 
 		<section>
