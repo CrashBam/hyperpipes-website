@@ -287,6 +287,11 @@ section { position: relative; padding: 96px 0; }
 .nav a:hover { color: #fff; }
 .nav .btn { --fw: 14px; padding: 11px 22px; font-size: 11px; }
 .nav .btn svg { width: 15px; height: 15px; }
+/* `.nav a` is more specific than `.btn-primary`, so the nav's muted link colour
+   was winning and the Wishlist button's label came out pale grey on pale blue —
+   the least legible thing on the page, on the button we most want pressed.
+   Restated here at .nav specificity. */
+.nav .btn-primary, .nav .btn-primary:hover { color: #04121f; }
 .nav-wishlist { gap: 8px; }
 
 /* --- hero ---------------------------------------------------------------- */
