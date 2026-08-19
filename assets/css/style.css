@@ -115,6 +115,7 @@ img, svg { max-width: 100%; display: block; }
 .diagram,
 .ribbon-panel,
 .band,
+.steam-band,
 .callout,
 .btn,
 .badge,
@@ -126,6 +127,7 @@ img, svg { max-width: 100%; display: block; }
 .diagram::before,
 .ribbon-panel::before,
 .band::before,
+.steam-band::before,
 .callout::before,
 .btn::before,
 .badge::before,
@@ -217,16 +219,20 @@ section { position: relative; padding: 96px 0; }
 .btn:hover::before { opacity: 1; }
 .btn svg { width: 17px; height: 17px; flex: none; }
 
-/* the one red thing in the furniture: the primary call to action */
+/* The primary call to action. It was HOT RED until 2026-08-19; David asked for
+   it in the site's own blue instead. The ramp is not a new colour — it is the
+   hero art's own `rimLight` gradient (#e4f7ff -> #4fb9ff -> #0076ee), so the
+   button is lit by the same light as the pipe behind it. Text stays near-black
+   because the ramp is bright at the end the eye starts from. */
 .btn-primary {
-  background: linear-gradient(100deg, #ff3a12, var(--red) 55%, #d20c00);
-  color: #05060f;
-  box-shadow: 0 8px 34px rgba(255, 16, 0, 0.30);
+  background: linear-gradient(100deg, #a9e6ff, var(--blue-hi) 45%, var(--blue));
+  color: #04121f;
+  box-shadow: 0 8px 34px rgba(0, 118, 238, 0.38);
 }
 .btn-primary:hover {
-  color: #05060f;
-  background: linear-gradient(100deg, #ff4c22, #ff1f0c 55%, #e01000);
-  box-shadow: 0 12px 46px rgba(255, 16, 0, 0.48);
+  color: #04121f;
+  background: linear-gradient(100deg, #c8f0ff, #6fc9ff 45%, #1a8bff);
+  box-shadow: 0 12px 46px rgba(0, 118, 238, 0.55);
 }
 .btn-primary::before { opacity: .85; }
 
@@ -556,8 +562,14 @@ section { position: relative; padding: 96px 0; }
   position: absolute;
   inset: auto 0 0 0;
   z-index: 2;
-  padding: 30px 26px 18px;
-  background: linear-gradient(transparent, rgba(0, 2, 8, .94));
+  padding: 44px 26px 18px;
+  /* The scrim used to be a single ramp to .94, which was plenty over the dark
+     placeholder plates. Real captures went in 2026-08-19 and one of them is a
+     bright cyan sky — the caption sat at roughly half opacity and vanished into
+     it. The ramp now reaches most of its darkness early, so the text has a
+     solid floor whatever the shot behind it is doing. */
+  background: linear-gradient(transparent, rgba(0, 2, 8, .62) 38%, rgba(0, 2, 8, .96));
+  text-shadow: 0 1px 3px rgba(0, 2, 8, .9);
   font-family: "Orbitron", sans-serif;
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -815,4 +827,80 @@ footer a:hover { color: var(--blue-hi); }
 
 @media (max-width: 900px) {
   .subpage { padding: 120px 0 70px; }
+}
+
+
+/* --- the Steam band -------------------------------------------------------
+   Added 2026-08-19, the day after the store page went public. The site had no
+   link to Steam at all, which was the single biggest thing missing from it.
+
+   The art is the wishlist plate out of
+   _STEAM_READY/Video Art For Steam Wishlist/, and it already carries its own
+   blue frame — so this box deliberately runs the site frame at a smaller --fw
+   and lets the two sit concentric rather than fighting.
+   -------------------------------------------------------------------------- */
+.steam-band {
+  --fw: 20px;
+  padding: 0;
+  background: linear-gradient(160deg, var(--panel), var(--void));
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.steam-band .art { position: relative; min-height: 100%; background: #000; overflow: hidden; }
+.steam-band .art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Anchor LEFT and overhang. The plate's own Steam badge sits at its far
+     right, and the art's aspect is so close to this cell's that `cover` alone
+     barely crops — the badge survived as a grey smudge right where the copy
+     starts. Widening the image past its box and clipping it on .art's overflow
+     throws that right-hand fifth away for good. The button carries the Steam
+     mark instead, once. */
+  object-position: left center;
+  width: 124%;
+  max-width: none;
+}
+/* the art is a black plate; this feathers it into the panel beside it rather
+   than ending on a hard vertical seam */
+.steam-band .art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 70%, var(--void));
+  pointer-events: none;
+}
+
+.steam-band .say { padding: 52px 52px 52px 12px; display: grid; gap: 18px; align-content: center; }
+.steam-band .say h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(22px, 2.6vw, 30px);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+  line-height: 1.25;
+}
+.steam-band .say h2 em { font-style: normal; color: var(--blue-hi); }
+.steam-band .say p { margin: 0; color: var(--muted); max-width: 46ch; }
+.steam-band .when {
+  font-family: "Orbitron", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ice);
+}
+.steam-band .when b { color: var(--blue-hi); font-weight: 700; }
+.steam-band .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+@media (max-width: 820px) {
+  .steam-band { grid-template-columns: 1fr; }
+  .steam-band .art { aspect-ratio: 16 / 9; }
+  .steam-band .art img { width: 100%; }
+  .steam-band .art::after { background: linear-gradient(180deg, transparent 55%, var(--void)); }
+  .steam-band .say { padding: 34px 28px 40px; }
+  .steam-band .actions .btn { flex: 1 1 100%; justify-content: center; }
 }
