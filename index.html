@@ -12,6 +12,7 @@
 <meta property="og:title" content="HyperPipes">
 <meta property="og:description" content="A neon anti-gravity racer where you ride the OUTSIDE of the pipe. Gravity pulls you around the tube — staying on top is the whole game.">
 <meta property="og:image" content="assets/img/social-card.png">
+<meta property="og:url" content="https://hyperpipesgame.com/">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
@@ -33,6 +34,7 @@
       <a href="#online">Online</a>
       <a href="#media">Media</a>
       <a href="manual/">Manuals</a>
+<<<<<<< HEAD
       <a class="btn btn-quiet nav-bug" href="https://github.com/CrashBam/hyperpipes-bugs/issues/new/choose" target="_blank" rel="noopener">Report a bug</a>
       <a class="btn btn-primary nav-wishlist" href="https://store.steampowered.com/app/5009100/HYPERPIPES/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -42,6 +44,10 @@
         </svg>
         <span>Wishlist</span>
       </a>
+=======
+      <a href="#steam">Steam</a>
+      <a class="btn" href="https://github.com/CrashBam/hyperpipes-bugs/issues/new/choose" target="_blank" rel="noopener">Report a bug</a>
+>>>>>>> 6ac0ea3c1502c262b841c15ecf6bf08b54e61988
     </nav>
   </div>
 </header>
@@ -282,7 +288,7 @@
   </div>
 
   <div class="hero-inner shell">
-    <span class="badge"><span class="dot"></span> In development &middot; playable build</span>
+    <span class="badge"><span class="dot"></span> Coming soon &middot; November 2026</span>
     <h1>HyperPipes</h1>
     <p class="tagline">Race the outside of the pipe</p>
     <p class="pitch">
@@ -292,6 +298,7 @@
       around the side is how you pass.
     </p>
     <div class="hero-cta">
+<<<<<<< HEAD
       <!-- The one red thing on the page is the thing we most want pressed, and
            right now that is the wishlist — see the .btn-primary note in style.css.
            "See the game" gave the red up rather than competing with it. -->
@@ -306,14 +313,59 @@
       <a class="btn" href="#media">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
         See the game
+=======
+      <!-- The primary CTA points at Steam, not at the gallery: wishlists are
+           what the store page is for and they are what Next Fest counts. -->
+      <a class="btn btn-primary" href="https://store.steampowered.com/app/5009100/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-9.96 9.14l5.34 2.2a2.82 2.82 0 0 1 1.6-.5h.14l2.37-3.44v-.05a3.77 3.77 0 1 1 3.77 3.77h-.09l-3.38 2.42v.12a2.83 2.83 0 0 1-5.6.55l-3.82-1.58A10 10 0 1 0 12 2Zm-4.3 15.16 1.22.5a2.13 2.13 0 1 0 1.2-3.02l1.3.54a1.56 1.56 0 1 1-1.2 2.88l-2.52-.9Zm7.56-4.3a2.51 2.51 0 1 0 0-5.02 2.51 2.51 0 0 0 0 5.02Zm0-.63a1.88 1.88 0 1 1 0-3.77 1.88 1.88 0 0 1 0 3.77Z"/></svg>
+        Wishlist on Steam
+>>>>>>> 6ac0ea3c1502c262b841c15ecf6bf08b54e61988
       </a>
-      <a class="btn" href="#features">What's in it</a>
+      <a class="btn" href="#media">See the game</a>
     </div>
   </div>
 
   <div class="scroll-hint" aria-hidden="true">
     <span>Scroll</span>
     <span class="line"></span>
+  </div>
+</section>
+
+<!-- ========================================================== steam ====== -->
+<!-- Added 2026-08-19. The store page went public on 18 Aug and the site had no
+     link to it at all — this band is that link.
+
+     ⚠️ THERE IS DELIBERATELY NO DEMO LINK HERE. The demo is a separate app
+     (5114170) and its store page is NOT public yet: as of 2026-08-19
+     store.steampowered.com/app/5114170/ answers 302 and bounces to the Steam
+     front page. Add the link the day that page returns 200, and not before —
+     a dead link to a demo is worse than no demo link. -->
+<section id="steam">
+  <div class="shell">
+    <div class="steam-band reveal">
+      <div class="art">
+        <img src="assets/img/wishlist-steam.jpg" width="1440" height="810"
+             alt="HyperPipes — wishlist on Steam" loading="lazy">
+      </div>
+      <div class="say">
+        <p class="when">Windows &amp; macOS &middot; <b>$14.99</b></p>
+        <!-- The art already shouts WISHLIST ON STEAM, so the copy says the two
+             things the art cannot: the date, and that a demo lands first. The
+             word "wishlist" appears once more, on the button, and nowhere else. -->
+        <h2>Out this <em>November</em>.<br>Free demo in October.</h2>
+        <p>
+          The store page is live now. Add HyperPipes to your list and Steam tells
+          you the day the demo opens and the day the game launches.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://store.steampowered.com/app/5009100/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-9.96 9.14l5.34 2.2a2.82 2.82 0 0 1 1.6-.5h.14l2.37-3.44v-.05a3.77 3.77 0 1 1 3.77 3.77h-.09l-3.38 2.42v.12a2.83 2.83 0 0 1-5.6.55l-3.82-1.58A10 10 0 1 0 12 2Zm-4.3 15.16 1.22.5a2.13 2.13 0 1 0 1.2-3.02l1.3.54a1.56 1.56 0 1 1-1.2 2.88l-2.52-.9Zm7.56-4.3a2.51 2.51 0 1 0 0-5.02 2.51 2.51 0 0 0 0 5.02Zm0-.63a1.88 1.88 0 1 1 0-3.77 1.88 1.88 0 0 1 0 3.77Z"/></svg>
+            Wishlist on Steam
+          </a>
+          <a class="btn" href="#features">What's in it</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -535,6 +587,9 @@
   <div class="shell">
     <p class="eyebrow reveal">Media</p>
     <h2 class="section-title reveal">Screenshots</h2>
+    <!-- Real captures went in 2026-08-19. Until then SHOTS was empty and this
+         gallery drew "coming soon" placeholder plates, on a live public site.
+         See the SHOTS array at the foot of this file to add more. -->
     <p class="lede reveal" id="media-lede">
       Straight from the game — no touch-ups.
     </p>
@@ -575,6 +630,7 @@
       <a href="#online">Online</a>
       <a href="#media">Media</a>
       <a href="manual/">Manuals</a>
+      <a href="https://store.steampowered.com/app/5009100/" target="_blank" rel="noopener">Steam</a>
       <a href="privacy/">Privacy</a>
       <a href="https://github.com/CrashBam/hyperpipes-bugs/issues" target="_blank" rel="noopener">Bug tracker</a>
     </nav>
@@ -593,8 +649,9 @@
    so the page never looks broken.
 --------------------------------------------------------------------------- */
 const SHOTS = [
-  // { file: "screenshots/race-01.png", caption: "Neon Run — final lap" },
-  // { file: "screenshots/garage.png",  caption: "The garage" },
+  { file: "screenshots/aurora-crown.jpg", caption: "Two craft on the crown, HUD hidden" },
+  { file: "screenshots/loop-ahead.jpg",   caption: "A loop coming up fast" },
+  { file: "screenshots/ice-lap-one.jpg",  caption: "Lap one, holding first" },
 ];
 
 const PLACEHOLDERS = [

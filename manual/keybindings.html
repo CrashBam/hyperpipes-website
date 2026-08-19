@@ -28,14 +28,14 @@
 <thead><tr><th style="width:28%">Action</th><th style="width:26%">Keyboard</th><th style="width:23%">Xbox</th><th style="width:23%">PlayStation</th></tr></thead>
 <tr><td>Accelerate</td><td class="key">W &middot; UP</td><td class="key">RT</td><td class="key">R2</td></tr>
 <tr><td>Brake</td><td class="key">S &middot; DOWN</td><td class="key">B &middot; LT</td><td class="key">CIRCLE &middot; L2</td></tr>
-<tr><td>Steer Left <span class="fixed">+ Left Stick</span></td><td class="key">A &middot; LEFT</td><td class="key">DPAD ◀</td><td class="key">DPAD ◀</td></tr>
-<tr><td>Steer Right <span class="fixed">+ Left Stick</span></td><td class="key">D &middot; RIGHT</td><td class="key">DPAD ▶</td><td class="key">DPAD ▶</td></tr>
+<tr><td>Steer Left</td><td class="key">A &middot; LEFT</td><td class="key">Left Stick</td><td class="key">Left Stick</td></tr>
+<tr><td>Steer Right</td><td class="key">D &middot; RIGHT</td><td class="key">Left Stick</td><td class="key">Left Stick</td></tr>
 <tr><td>Boost</td><td class="key">SHIFT</td><td class="key">Y</td><td class="key">TRIANGLE</td></tr>
 <tr><td>Fire</td><td class="key">SPACE</td><td class="key">A &middot; RB</td><td class="key">CROSS &middot; R1</td></tr>
 <tr><td>Use Item</td><td class="key">X</td><td class="key">X</td><td class="key">SQUARE</td></tr>
 <tr><td>Target Next</td><td class="key">E</td><td class="key">LB</td><td class="key">L1</td></tr>
 <tr><td>Target Prev</td><td class="key">Q</td><td class="key">&mdash;</td><td class="key">&mdash;</td></tr>
-<tr><td>Camera View</td><td class="key">C</td><td class="key">L3</td><td class="key">L3</td></tr>
+<tr><td>Camera View</td><td class="key">C</td><td class="key">SELECT</td><td class="key">SHARE</td></tr>
 <tr><td>Pause</td><td class="key">ESCAPE &middot; P</td><td class="key">START</td><td class="key">OPTIONS</td></tr>
 </table>
 <!-- END:bindings_racing -->
@@ -46,11 +46,11 @@
 <table>
 <thead><tr><th style="width:28%">Action</th><th style="width:26%">Keyboard</th><th style="width:23%">Xbox</th><th style="width:23%">PlayStation</th></tr></thead>
 <tr><td>Screenshot</td><td class="key">F2</td><td class="key">R3</td><td class="key">R3</td></tr>
-<tr><td>Hide HUD</td><td class="key">H</td><td class="key">SELECT</td><td class="key">SHARE</td></tr>
+<tr><td>Hide HUD</td><td class="key">H</td><td class="key">&mdash;</td><td class="key">&mdash;</td></tr>
 <tr><td>Radio Next</td><td class="key">PERIOD</td><td class="key">DPAD ▲</td><td class="key">DPAD ▲</td></tr>
 <tr><td>Radio Prev</td><td class="key">COMMA</td><td class="key">DPAD ▼</td><td class="key">DPAD ▼</td></tr>
-<tr><td>Music Vol +</td><td class="key">APOSTROPHE</td><td class="key">&mdash;</td><td class="key">&mdash;</td></tr>
-<tr><td>Music Vol −</td><td class="key">SEMICOLON</td><td class="key">&mdash;</td><td class="key">&mdash;</td></tr>
+<tr><td>Music Vol +</td><td class="key">APOSTROPHE</td><td class="key">DPAD ▶</td><td class="key">DPAD ▶</td></tr>
+<tr><td>Music Vol −</td><td class="key">SEMICOLON</td><td class="key">DPAD ◀</td><td class="key">DPAD ◀</td></tr>
 </table>
 <!-- END:bindings_media -->
 
@@ -59,8 +59,11 @@
 		Two bindings separated by a dot both work &mdash; brake is B <em>and</em>
 		the left trigger, and either will do it. A dash means nothing is bound on
 		that device: target-previous has no pad button, because one shoulder
-		button stepping forward through the field is enough against eight rivals.
-		Grey text after an action is a fixed analogue input, described overleaf.
+		button stepping forward through the field is enough against eight rivals,
+		and HIDE HUD gave its up to CAMERA VIEW. Where a pad cell names a stick
+		rather than a button &mdash; steering says <em>Left Stick</em> &mdash; the
+		control is an analogue axis and is not rebindable, though the keyboard
+		half of the same row still is.
 	</div>
 </section>
 
