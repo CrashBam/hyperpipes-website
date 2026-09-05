@@ -746,8 +746,10 @@ footer a:hover { color: var(--blue-hi); }
   .nav { gap: 18px; }
   .nav a:not(.btn) { display: none; }
   /* two buttons is one too many once the links collapse: the wishlist is the
-     one worth the width, and "Report a bug" still lives in the footer band */
-  .nav .nav-bug { display: none; }
+     one worth the width, and "Report a bug" still lives in the footer band.
+     The press kit goes the same way and for a stronger reason — nobody is
+     downloading a 106 MB kit on a phone. */
+  .nav .nav-bug, .nav .nav-press { display: none; }
   section { padding: 72px 0; }
   /* the frame's cut corners are a fixed size, so on small boxes it has to
      shrink with them or the diagonals eat the content */
