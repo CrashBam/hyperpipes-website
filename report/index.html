@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HyperPipes — Report a Bug</title>
+<meta name="description" content="Found a bug in HyperPipes, or got an idea? Tell us here. No account needed — just fill in the boxes and press send.">
+<meta name="theme-color" content="#000208">
+<meta name="robots" content="index, follow">
+
+<link rel="icon" href="../assets/img/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/icon.svg">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar stuck">
+  <div class="shell">
+    <a class="brand" href="../">
+      <img src="../assets/img/icon.svg" alt="">
+      <b>HyperPipes</b>
+    </a>
+    <nav class="nav">
+      <a href="../#features">Features</a>
+      <a href="../#play">How it plays</a>
+      <a href="../manual/">Manuals</a>
+      <a class="btn btn-primary" href="./" aria-current="page">Report a bug</a>
+    </nav>
+  </div>
+</header>
+
+<main class="subpage prose">
+  <div class="shell shell-narrow">
+
+    <p class="crumb"><a href="../">Home</a> &rsaquo; Report a bug</p>
+    <h1 class="section-title">Report a Bug</h1>
+
+    <div class="callout">
+      <p><b>No account, no sign-up, nothing to log into.</b> Fill in the boxes,
+      press send, and it lands in the developer's inbox. It is one person
+      reading these, so plain words are perfect — you do not need to know any
+      technical terms.</p>
+    </div>
+
+    <!-- ==================================================================
+         THE FORM
+
+         Posts to Formspree with fetch(), not a plain form POST, so the
+         reporter stays on this page and gets a HyperPipes thank-you instead
+         of being thrown onto a formspree.io screen. FORM_ID is the only
+         thing that has to be filled in; see the script at the foot.
+         ================================================================== -->
+
+    <form id="report" class="rform" novalidate>
+
+      <div class="field">
+        <label for="kind">What kind of thing is this?</label>
+        <select id="kind" name="Kind" required>
+          <option value="Bug — something worked wrong">Bug — something worked wrong</option>
+          <option value="Crash — the game closed or froze">Crash — the game closed or froze</option>
+          <option value="Feel or balance — something is too hard, too slow, too easy">Feel or balance — too hard, too slow, too easy</option>
+          <option value="Idea or request">Idea or request</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="what">What happened?<span class="req">required</span></label>
+        <p class="hint">In your own words. If you can say what you were doing
+        just before it happened, that is the most useful part of all.</p>
+        <textarea id="what" name="What happened" rows="7" required
+                  placeholder="I was on the third lap of a Sky track and my ship fell through the pipe on the big loop…"></textarea>
+      </div>
+
+      <!-- The track code is the whole reason this page exists rather than a
+           generic contact form: it carries the seed AND every dial, so it
+           hands over the exact track. Validation mirrors TrackCode.cs —
+           16 symbols, Crockford base 32 with I/L folded to 1 and O to 0. -->
+      <div class="field">
+        <label for="code">Track code</label>
+        <p class="hint">The single most useful thing you can give us — it
+        recreates your exact track, dial for dial. Find it in the
+        <b>Race Lab</b>, on a track's details, or on the finish screen after a
+        Lab test race. Career and cup races have no code — just say which race
+        it was in the box above, and leave this blank.</p>
+        <input id="code" name="Track code" type="text" inputmode="latin"
+               autocomplete="off" spellcheck="false"
+               class="mono code-input" maxlength="19"
+               placeholder="XXXX-XXXX-XXXX-XXXX">
+        <p class="err" id="code-err" hidden></p>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="build">Which build?</label>
+          <select id="build" name="Build">
+            <option value="Full game">Full game</option>
+            <option value="Demo">Demo</option>
+            <option value="Not sure">Not sure</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="os">What are you playing on?</label>
+          <select id="os" name="System">
+            <option value="Windows">Windows</option>
+            <option value="macOS">macOS</option>
+            <option value="Steam Deck">Steam Deck</option>
+            <option value="Linux">Linux</option>
+            <option value="Something else">Something else</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="version">Version</label>
+        <p class="hint">The small grey tag in the <b>bottom-right corner of the
+        menus</b>, like <span class="mono">v0.9.0</span>. A guess is fine.</p>
+        <input id="version" name="Version" type="text" autocomplete="off"
+               class="mono" maxlength="24" placeholder="v0.9.0">
+      </div>
+
+      <div class="field">
+        <label for="email">Your email</label>
+        <p class="hint">Optional, and only ever used to reply to you about this
+        one report. No list, no newsletter — there isn't one.</p>
+        <input id="email" name="Reply to" type="email" autocomplete="email"
+               maxlength="120" placeholder="you@example.com">
+      </div>
+
+      <div class="callout tip">
+        <p><b>A picture beats a paragraph.</b> Press <span class="mono">F2</span>
+        in-game and a screenshot is saved to your Pictures folder
+        (<span class="mono">Pictures/HyperPipes</span>). Press
+        <span class="mono">H</span> first if you want the HUD out of the way.
+        Mention it below and we'll ask you for it by email.</p>
+      </div>
+
+      <!-- Spam. `_gotcha` is Formspree's own honeypot: bots fill every field
+           they find, humans never see this one, and a filled one is dropped
+           silently at their end. -->
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="gotcha">
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary" id="send">Send report</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </div>
+
+    </form>
+
+    <div class="callout done" id="done" hidden>
+      <p><b>Thank you — that's in.</b> It went straight to the developer. If you
+      left an email address you may get a reply asking for a screenshot or your
+      track code; if not, it is still read, and it still helps.</p>
+      <p class="foot-note"><a href="./" id="again">Send another one</a> &middot;
+      <a href="../">Back to the home page</a></p>
+    </div>
+
+    <h2>Other ways to reach us</h2>
+    <ul>
+      <li><b>Already have a GitHub account?</b> You can file it yourself in the
+      <a href="https://github.com/CrashBam/hyperpipes-bugs/issues/new/choose" target="_blank" rel="noopener">bug
+      tracker</a> and follow it to the fix.</li>
+      <li><b>Own the game on Steam?</b> The
+      <a href="https://steamcommunity.com/app/5009100/discussions/" target="_blank" rel="noopener">Steam
+      Discussions</a> board works too, and other players can see it there.</li>
+    </ul>
+
+    <p class="foot-note">Nothing on this page is tracked or stored in your
+    browser. What you type is sent once, when you press the button, and nowhere
+    else. See the <a href="../privacy/">privacy policy</a>.</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="shell">
+    <p>&copy; <span id="year">2026</span> CrashBamBoom &middot; HyperPipes &middot; Made with Godot</p>
+    <nav class="fnav">
+      <a href="../">Home</a>
+      <a href="../manual/">Manuals</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="./">Report a bug</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* ---------------------------------------------------------------------------
+   THE ONE THING TO FILL IN.
+
+   Sign up free at formspree.io, make a form, and it hands you an endpoint that
+   looks like  https://formspree.io/f/xdorwkbl . Paste the LAST PART — just the
+   eight characters after /f/ — between the quotes below, commit, push. Done.
+
+   Left empty on purpose: an empty id makes the page say "not open yet" and
+   refuse to send, which is the honest failure. A form that silently swallows a
+   bug report is worse than no form at all.
+--------------------------------------------------------------------------- */
+const FORM_ID = "";
+
+const form   = document.getElementById("report");
+const send   = document.getElementById("send");
+const status = document.getElementById("status");
+const done   = document.getElementById("done");
+const codeIn = document.getElementById("code");
+const codeErr= document.getElementById("code-err");
+
+/* --- the track code field -------------------------------------------------
+   Mirrors TrackCode.Normalise + TrackCode.Format in the game: strip dashes and
+   spaces, upper-case, fold the three letters the alphabet leaves out onto the
+   digits they get mistaken for, then re-insert a dash every 4. Doing it as the
+   player types means a code copied out of a chat window with stray spaces
+   still lands correctly. */
+const ALPHABET = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+
+function normalise(text) {
+  let out = "";
+  for (const raw of text) {
+    let c = raw.toUpperCase();
+    if (c === "-" || c === " " || c === "_" || c === ".") continue;
+    if (c === "I" || c === "L") c = "1";
+    else if (c === "O") c = "0";
+    out += c;
+  }
+  return out.slice(0, 16);
+}
+
+function group(text) {
+  return text.match(/.{1,4}/g)?.join("-") ?? "";
+}
+
+codeIn.addEventListener("input", () => {
+  const clean = normalise(codeIn.value);
+  codeIn.value = group(clean);
+  showCodeError("");
+});
+
+function showCodeError(message) {
+  codeErr.textContent = message;
+  codeErr.hidden = !message;
+  codeIn.classList.toggle("bad", !!message);
+}
+
+/* Checked on send, not while typing — nagging someone halfway through the
+   fourth character is how you lose a bug report. */
+function codeProblem() {
+  const clean = normalise(codeIn.value);
+  if (clean.length === 0) return "";                 // blank is allowed
+  if (clean.length !== 16)
+    return `A track code is 16 characters — this one is ${clean.length}. Leave it blank if you don't have it.`;
+  for (const c of clean)
+    if (!ALPHABET.includes(c)) return `"${c}" is not part of a track code.`;
+  return "";
+}
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  if (!FORM_ID) {
+    status.textContent = "This form is not switched on yet — please use one of the links below.";
+    status.className = "status bad";
+    return;
+  }
+
+  const what = document.getElementById("what");
+  if (!what.value.trim()) {
+    status.textContent = "Please tell us what happened first.";
+    status.className = "status bad";
+    what.focus();
+    return;
+  }
+
+  const problem = codeProblem();
+  if (problem) { showCodeError(problem); codeIn.focus(); return; }
+
+  send.disabled = true;
+  status.textContent = "Sending…";
+  status.className = "status";
+
+  const data = new FormData(form);
+  data.set("_subject", `HyperPipes report — ${data.get("Kind")}`);
+
+  try {
+    const reply = await fetch(`https://formspree.io/f/${FORM_ID}`, {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" }
+    });
+    if (!reply.ok) throw new Error(String(reply.status));
+    form.hidden = true;
+    done.hidden = false;
+    done.scrollIntoView({ behavior: "smooth", block: "center" });
+  } catch (error) {
+    /* Never eat the report. If the send failed, the words are still in the box
+       and we say so plainly, with a way through that does not need us. */
+    send.disabled = false;
+    status.innerHTML = "That didn't send — your words are still here, so try again in a moment. " +
+      'If it keeps failing, please use one of the links below the form.';
+    status.className = "status bad";
+  }
+});
+</script>
+</body>
+</html>

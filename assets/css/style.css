@@ -924,3 +924,165 @@ footer a:hover { color: var(--blue-hi); }
   .steam-band .say { padding: 34px 28px 40px; }
   .steam-band .actions .btn { flex: 1 1 100%; justify-content: center; }
 }
+
+
+/* --- the bug report form (/report) ----------------------------------------
+   Added 2026-09-07. The point of the page is that a player needs NO account to
+   file a bug, so the form has to carry the whole burden of looking trustworthy
+   on its own — hence the capsule frame on every input rather than a default
+   browser box. Inputs are framed the same way buttons are: the frame lives on
+   a ::before, so it costs no layout and never moves the text inside.
+
+   ⚠️ Inputs and selects are REPLACED elements: they carry no ::before, so the
+   site's border-image frame cannot be reused here. These use a real 1px border
+   plus the same clip-path corner cut the buttons use, which reads as the same
+   language without the second line.
+--------------------------------------------------------------------------- */
+
+.rform { margin: 30px 0 10px; }
+
+.field { margin: 0 0 26px; position: relative; }
+
+.field > label {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+
+/* "required" is a quiet word, not a red asterisk — an asterisk is a symbol you
+   have to already know, and this page is aimed at people who don't. */
+.req {
+  font-family: "Exo2", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-hi);
+  opacity: .85;
+}
+
+.field .hint {
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.55;
+  margin: 0 0 10px;
+  max-width: 62ch;
+}
+.field .hint b { color: var(--ice); font-weight: 600; }
+
+.rform input,
+.rform select,
+.rform textarea {
+  --ch: 9px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  clip-path: polygon(
+    var(--ch) 0, calc(100% - var(--ch)) 0,
+    100% var(--ch), 100% calc(100% - var(--ch)),
+    calc(100% - var(--ch)) 100%, var(--ch) 100%,
+    0 calc(100% - var(--ch)), 0 var(--ch));
+  background: rgba(0, 118, 238, 0.05);
+  color: var(--text);
+  font-family: "Exo2", "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;                  /* 16px minimum, or iOS zooms on focus */
+  line-height: 1.5;
+  transition: background .18s ease, box-shadow .18s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.rform textarea { resize: vertical; min-height: 130px; }
+
+.rform input::placeholder,
+.rform textarea::placeholder { color: rgba(127, 147, 173, 0.62); }
+
+.rform input:focus,
+.rform select:focus,
+.rform textarea:focus {
+  outline: none;
+  background: rgba(0, 118, 238, 0.12);
+  border-color: var(--blue-hi);
+}
+
+/* select needs its own arrow once appearance is stripped */
+.rform select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--blue-hi) 50%),
+    linear-gradient(135deg, var(--blue-hi) 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(50% + 2px),
+    calc(100% - 14px) calc(50% + 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 44px;
+  cursor: pointer;
+}
+.rform select option { background: var(--panel); color: var(--text); }
+
+.code-input {
+  font-size: 19px !important;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.rform .bad,
+.rform .bad:focus { border-color: var(--red); background: rgba(255, 16, 0, 0.06); }
+
+.field .err {
+  color: var(--red-hot);
+  font-size: 14.5px;
+  margin: 9px 0 0;
+}
+
+/* Two dials side by side on a wide screen, stacked on a phone. */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 22px;
+}
+
+/* Formspree's honeypot. Off-screen rather than display:none — a bot that reads
+   the stylesheet skips a hidden field, but fills one it believes is visible. */
+.gotcha {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px !important;
+  height: 1px;
+  opacity: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  margin: 34px 0 0;
+}
+.actions .btn { padding: 16px 38px; }
+.actions .btn:disabled { opacity: .5; cursor: default; transform: none; }
+
+.status { margin: 0; color: var(--muted); font-size: 15px; }
+.status.bad { color: var(--red-hot); }
+.status a { color: var(--blue-hi); }
+
+.callout.tip { margin: 30px 0; padding: 24px 28px; }
+.callout.tip p { font-size: 15.5px; }
+.callout.tip .mono { color: var(--ice); }
+
+.callout.done { margin: 20px 0 10px; }
+.callout.done .foot-note { margin: 14px 0 0; font-size: 15px; }
+
+@media (max-width: 640px) {
+  .field-row { grid-template-columns: 1fr; }
+  .actions .btn { flex: 1 1 100%; justify-content: center; }
+  .code-input { font-size: 17px !important; letter-spacing: 0.16em; }
+}
