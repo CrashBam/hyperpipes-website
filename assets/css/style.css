@@ -557,6 +557,9 @@ section { position: relative; padding: 96px 0; }
 
 /* --- media gallery ------------------------------------------------------- */
 
+/* the press kit button under the gallery — the only route to it on a phone */
+.media-press { display: flex; justify-content: center; margin-top: 36px; }
+
 .shots {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -747,9 +750,15 @@ footer a:hover { color: var(--blue-hi); }
   .nav a:not(.btn) { display: none; }
   /* two buttons is one too many once the links collapse: the wishlist is the
      one worth the width, and "Report a bug" still lives in the footer band.
-     The press kit goes the same way and for a stronger reason — nobody is
-     downloading a 106 MB kit on a phone. */
-  .nav .nav-bug, .nav .nav-press { display: none; }
+     The press kit leaves the top bar too, but NOT the page: it has a button
+     under the gallery (.media-press) and a footer link. Hiding it everywhere
+     was wrong — a journalist on a phone opens the Drive folder to LOOK and
+     saves the kit later (David, 2026-09-17: "on the phone, nothing"). */
+  .nav .nav-bug { display: none; }
+  /* The press kit STAYS in the top bar on a phone, small, beside the wishlist
+     (David, 2026-09-17: "add a small button beside wishlist at the top of the
+     phone webpage"). The wishlist keeps the loud colour; this one stays quiet. */
+  .nav .nav-press { padding: 10px 14px; font-size: 10px; letter-spacing: 0.08em; white-space: nowrap; }
   section { padding: 72px 0; }
   /* the frame's cut corners are a fixed size, so on small boxes it has to
      shrink with them or the diagonals eat the content */
@@ -762,6 +771,19 @@ footer a:hover { color: var(--blue-hi); }
   .brand b { font-size: 14px; letter-spacing: 0.06em; }
   .brand img { width: 32px; height: 32px; }
   .nav .btn { padding: 10px 14px; font-size: 10px; letter-spacing: 0.08em; }
+  .nav { gap: 8px; }
+  .nav .nav-press { padding: 10px 9px; letter-spacing: 0.04em; }
+  .brand { gap: 8px; }
+}
+
+/* the narrowest phones: three things only just fit in the top bar. David picked
+   the look WITH the wordmark (2026-09-17), so it shrinks rather than hides. */
+@media (max-width: 375px) {
+  .brand { gap: 6px; }
+  .brand b { font-size: 11px; letter-spacing: 0.03em; }
+  .brand img { width: 26px; height: 26px; }
+  .nav { gap: 6px; }
+  .nav .btn { padding: 9px 9px; font-size: 9px; letter-spacing: 0.04em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
