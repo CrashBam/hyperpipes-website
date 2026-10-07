@@ -581,7 +581,18 @@
 <section id="media">
   <div class="shell">
     <p class="eyebrow reveal">Media</p>
-    <h2 class="section-title reveal">Screenshots</h2>
+    <h2 class="section-title reveal">Trailer</h2>
+    <!-- Trailer, 2026-10-06. A click-to-play poster, not a bare iframe: the page
+         loads nothing from YouTube until someone presses play (faster, and no
+         YouTube cookies on a plain visit). youtube-nocookie on the click too. -->
+    <figure class="shot trailer reveal">
+      <button class="trailer-play" type="button" data-yt="Iig3eYApoR4" aria-label="Play the HyperPipes trailer">
+        <img src="screenshots/trailer-poster.jpg" alt="HyperPipes trailer" loading="lazy">
+        <span class="trailer-icon" aria-hidden="true"></span>
+      </button>
+      <figcaption>Official trailer &middot; 1:39</figcaption>
+    </figure>
+    <h2 class="section-title reveal trailer-next">Screenshots</h2>
     <!-- Real captures went in 2026-08-19. Until then SHOTS was empty and this
          gallery drew "coming soon" placeholder plates, on a live public site.
          See the SHOTS array at the foot of this file to add more. -->
@@ -656,10 +667,27 @@
    Until this list has entries the gallery draws stylised placeholder plates,
    so the page never looks broken.
 --------------------------------------------------------------------------- */
+/* the trailer poster turns into the player on the first click */
+document.querySelectorAll(".trailer-play").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const id = btn.dataset.yt;
+    const f = document.createElement("iframe");
+    f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    f.title = "HyperPipes trailer";
+    f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    f.allowFullscreen = true;
+    btn.replaceWith(f);
+  });
+});
+
 const SHOTS = [
-  { file: "screenshots/aurora-crown.jpg", caption: "Two craft on the crown, HUD hidden" },
-  { file: "screenshots/loop-ahead.jpg",   caption: "A loop coming up fast" },
-  { file: "screenshots/ice-lap-one.jpg",  caption: "Lap one, holding first" },
+  { file: "screenshots/space-station-loops.jpg",  caption: "Twin loops past a space station" },
+  { file: "screenshots/cockpit-grandstands.jpg",  caption: "Hover grandstands over the sky islands" },
+  { file: "screenshots/sky-climb.jpg",            caption: "Up the climb, Phantom in sight" },
+  { file: "screenshots/stunt-ring-ahead.jpg",     caption: "Leading into a ring of fire" },
+  { file: "screenshots/shield-up.jpg",            caption: "Shield up on the S-bend" },
+  { file: "screenshots/final-lap-lead.jpg",       caption: "Final lap, still in front" },
+  { file: "screenshots/sky-islands-overview.jpg", caption: "The whole circuit, from above" },
 ];
 
 const PLACEHOLDERS = [
