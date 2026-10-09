@@ -611,7 +611,9 @@ section { position: relative; padding: 96px 0; }
   border-style: solid; border-width: 20px 0 20px 32px; border-color: transparent transparent transparent var(--ice);
 }
 .trailer-play:hover .trailer-icon, .trailer-play:focus-visible .trailer-icon { transform: scale(1.1); box-shadow: 0 0 0 3px var(--ice), 0 0 44px var(--blue-hi); }
-.trailer-next { margin-top: 0; }
+/* its own band right under the hero (2026-10-09): less air than a full section */
+.trailer-section { padding: 56px 0 24px; }
+.trailer-section .trailer { margin-bottom: 0; }
 
 /* placeholder plate, shown until real screenshots land in /screenshots */
 .shot.empty { display: grid; place-items: center; }

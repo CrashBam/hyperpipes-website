@@ -313,9 +313,9 @@
         </svg>
         Wishlist on Steam
       </a>
-      <a class="btn" href="#media">
+      <a class="btn" href="#trailer">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-        See the game
+        Watch the trailer
       </a>
     </div>
   </div>
@@ -323,6 +323,26 @@
   <div class="scroll-hint" aria-hidden="true">
     <span>Scroll</span>
     <span class="line"></span>
+  </div>
+</section>
+
+<!-- ======================================================== trailer ===== -->
+<!-- Moved up 2026-10-09 (David: "it's so far down. it needs to be closer to the
+     top"). It sat in #media, under the features, the play diagram and online —
+     most visitors never scrolled that far. Now it is the first thing under the
+     hero. A click-to-play poster, not a bare iframe: the page loads nothing from
+     YouTube until someone presses play (faster, and no YouTube cookies on a plain
+     visit). youtube-nocookie on the click too. Not lazy-loaded any more: it is
+     near the top, so the browser needs the poster at once. -->
+<section id="trailer" class="trailer-section">
+  <div class="shell">
+    <figure class="shot trailer reveal">
+      <button class="trailer-play" type="button" data-yt="Iig3eYApoR4" aria-label="Play the HyperPipes trailer">
+        <img src="screenshots/trailer-poster.jpg" alt="HyperPipes trailer">
+        <span class="trailer-icon" aria-hidden="true"></span>
+      </button>
+      <figcaption>Official trailer &middot; 1:39</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -581,18 +601,7 @@
 <section id="media">
   <div class="shell">
     <p class="eyebrow reveal">Media</p>
-    <h2 class="section-title reveal">Trailer</h2>
-    <!-- Trailer, 2026-10-06. A click-to-play poster, not a bare iframe: the page
-         loads nothing from YouTube until someone presses play (faster, and no
-         YouTube cookies on a plain visit). youtube-nocookie on the click too. -->
-    <figure class="shot trailer reveal">
-      <button class="trailer-play" type="button" data-yt="Iig3eYApoR4" aria-label="Play the HyperPipes trailer">
-        <img src="screenshots/trailer-poster.jpg" alt="HyperPipes trailer" loading="lazy">
-        <span class="trailer-icon" aria-hidden="true"></span>
-      </button>
-      <figcaption>Official trailer &middot; 1:39</figcaption>
-    </figure>
-    <h2 class="section-title reveal trailer-next">Screenshots</h2>
+    <h2 class="section-title reveal">Screenshots</h2>
     <!-- Real captures went in 2026-08-19. Until then SHOTS was empty and this
          gallery drew "coming soon" placeholder plates, on a live public site.
          See the SHOTS array at the foot of this file to add more. -->
