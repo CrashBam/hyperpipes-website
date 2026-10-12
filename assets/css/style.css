@@ -614,6 +614,7 @@ section { position: relative; padding: 96px 0; }
 /* its own band right under the hero (2026-10-09): less air than a full section */
 .trailer-section { padding: 56px 0 24px; }
 .trailer-section .trailer { margin-bottom: 0; }
+.trailer-section .trailer + .trailer { margin-top: 40px; } /* builder video under the trailer */
 
 /* placeholder plate, shown until real screenshots land in /screenshots */
 .shot.empty { display: grid; place-items: center; }

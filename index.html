@@ -291,14 +291,13 @@
   </div>
 
   <div class="hero-inner shell">
-    <span class="badge"><span class="dot"></span> Coming soon &middot; November 2026</span>
+    <span class="badge"><span class="dot"></span> Coming soon &middot; 7 December 2026</span>
     <h1>HyperPipes</h1>
     <p class="tagline">Race the outside of the pipe</p>
     <p class="pitch">
       A neon anti-gravity racer built on one twist: you ride the <em>outside</em> of the
-      tube, not the inside. Gravity drags you around the circumference toward the
-      bottom of the pipe — so holding the top is a balancing act, and swinging
-      around the side is how you pass.
+      tube, not the inside — all the way around it. Ride the top to recharge, drop
+      underneath to grab the pickups, and swing around the side to pass.
     </p>
     <div class="hero-cta">
       <!-- The primary CTA points at Steam, not at the gallery: wishlists are
@@ -343,6 +342,15 @@
       </button>
       <figcaption>Official trailer &middot; 1:39</figcaption>
     </figure>
+    <!-- Added 2026-10-12: the track builder mini trailer (full game). Same click-to-play
+         poster as the trailer above, so it also loads nothing from YouTube until pressed. -->
+    <figure class="shot trailer reveal">
+      <button class="trailer-play" type="button" data-yt="vauA5fAQheM" aria-label="Play the HyperPipes track builder video">
+        <img src="screenshots/builder-poster.jpg" alt="HyperPipes track builder: draw it, race it">
+        <span class="trailer-icon" aria-hidden="true"></span>
+      </button>
+      <figcaption>Track builder: draw your own track, then race it &middot; 1:42</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -367,7 +375,7 @@
         <!-- The art already shouts WISHLIST ON STEAM, so the copy says the two
              things the art cannot: the date, and that a demo lands first. The
              word "wishlist" appears once more, on the button, and nowhere else. -->
-        <h2>Out this <em>November</em>.<br>Free demo in October.</h2>
+        <h2>Out <em>7 December</em>.<br>Free demo out now.</h2>
         <p>
           The store page is live now. Add HyperPipes to your list and Steam tells
           you the day the demo opens and the day the game launches.
@@ -682,7 +690,7 @@ document.querySelectorAll(".trailer-play").forEach(btn => {
     const id = btn.dataset.yt;
     const f = document.createElement("iframe");
     f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
-    f.title = "HyperPipes trailer";
+    f.title = btn.getAttribute("aria-label").replace(/^Play the /, "");
     f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
     f.allowFullscreen = true;
     btn.replaceWith(f);
