@@ -826,11 +826,18 @@ footer a:hover { color: var(--blue-hi); }
   .nav .btn { padding: 9px 9px; font-size: 9px; letter-spacing: 0.04em; }
 }
 
+/* 13 Oct 2026: on phones under 400 px the Bluesky logo leaves the top bar (measured: 22-35 px
+   too wide at 375-390 px with both logos). It stays in the footer. Discord, the press kit
+   (David, 17 Sept) and the Wishlist stay. */
+@media (max-width: 400px) {
+  .nav .nav-bsky { display: none; }
+}
+
 /* 13 Oct 2026: the smallest phones (320 px) cannot fit four things. The Discord logo goes
    first — it is in the wishlist band, the bug box and the footer; the Wishlist and the
    press kit (David, 17 Sept) stay. */
 @media (max-width: 350px) {
-  .nav .nav-discord { display: none; }
+  .nav .nav-discord { display: none; }  /* Bluesky too: it shares the class */
   .nav { gap: 4px; }
 }
 
