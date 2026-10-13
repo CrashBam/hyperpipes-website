@@ -214,14 +214,17 @@ section { position: relative; padding: 96px 0; }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text);
-  background: rgba(0, 118, 238, 0.07);
+  /* The blue tint now sits on a SOLID dark panel (13 Oct 2026). It was 7% blue and
+     nothing else, so the page's starfield showed through — David saw a "pixel" in the
+     Discord button and asked if it was on purpose. It was a star behind the glass. */
+  background: linear-gradient(rgba(0, 118, 238, 0.07), rgba(0, 118, 238, 0.07)), var(--panel);
   cursor: pointer;
   transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
 }
 .btn:hover {
   color: #fff;
   transform: translateY(-2px);
-  background: rgba(0, 118, 238, 0.18);
+  background: linear-gradient(rgba(0, 118, 238, 0.18), rgba(0, 118, 238, 0.18)), var(--panel);
   box-shadow: 0 8px 30px rgba(0, 118, 238, 0.28);
 }
 .btn:hover::before { opacity: 1; }
@@ -878,7 +881,7 @@ footer a:hover { color: var(--blue-hi); }
   margin: 22px 0 0;
 }
 .doc-links .btn { --fw: 14px; padding: 11px 20px; font-size: 12px; }
-.btn-quiet { color: var(--muted); background: rgba(0, 118, 238, 0.03); }
+.btn-quiet { color: var(--muted); background: linear-gradient(rgba(0, 118, 238, 0.03), rgba(0, 118, 238, 0.03)), var(--panel); }
 .btn-quiet::before { opacity: .38; }
 
 .foot-note {
