@@ -293,6 +293,19 @@ section { position: relative; padding: 96px 0; }
    Restated here at .nav specificity. */
 .nav .btn-primary, .nav .btn-primary:hover { color: #04121f; }
 .nav-wishlist { gap: 8px; }
+.nav-discord { gap: 8px; }
+/* 13 Oct 2026, the top bar rearranged: it wrapped ("HOW IT / PLAYS", "REPORT A / BUG") and
+   the Wishlist ran past the column. No item may wrap; Discord is the logo alone (its name is
+   the aria-label); two links leave the bar (footer keeps them); the rest leave below 1240 px. */
+.nav { gap: 24px; }
+.nav a, .nav .btn { white-space: nowrap; }
+.nav .nav-extra { display: none; }
+.nav .nav-discord { padding-left: 14px; padding-right: 14px; }
+.nav .nav-discord span { display: none; }
+.nav .nav-discord svg { width: 18px; height: 18px; }
+@media (max-width: 1240px) {
+  .nav a:not(.btn) { display: none; }
+}
 
 /* --- hero ---------------------------------------------------------------- */
 
@@ -776,6 +789,7 @@ footer a:hover { color: var(--blue-hi); }
      was wrong — a journalist on a phone opens the Drive folder to LOOK and
      saves the kit later (David, 2026-09-17: "on the phone, nothing"). */
   .nav .nav-bug { display: none; }
+  .nav .nav-discord { padding-left: 12px; padding-right: 12px; }
   /* The press kit STAYS in the top bar on a phone, small, beside the wishlist
      (David, 2026-09-17: "add a small button beside wishlist at the top of the
      phone webpage"). The wishlist keeps the loud colour; this one stays quiet. */
@@ -788,7 +802,8 @@ footer a:hover { color: var(--blue-hi); }
 
 /* very narrow phones: the wordmark is one long word now, so give the top bar
    room rather than letting the brand and the button fight each other */
-@media (max-width: 400px) {
+/* 13 Oct 2026: was 400 px — at 390-430 px the Wishlist ran past the screen edge. */
+@media (max-width: 520px) {
   .brand b { font-size: 14px; letter-spacing: 0.06em; }
   .brand img { width: 32px; height: 32px; }
   .nav .btn { padding: 10px 14px; font-size: 10px; letter-spacing: 0.08em; }
@@ -799,12 +814,21 @@ footer a:hover { color: var(--blue-hi); }
 
 /* the narrowest phones: three things only just fit in the top bar. David picked
    the look WITH the wordmark (2026-09-17), so it shrinks rather than hides. */
-@media (max-width: 375px) {
+/* 13 Oct 2026: was 375 px — 390-440 px phones need these sizes too (measured in frames). */
+@media (max-width: 440px) {
   .brand { gap: 6px; }
   .brand b { font-size: 11px; letter-spacing: 0.03em; }
   .brand img { width: 26px; height: 26px; }
   .nav { gap: 6px; }
   .nav .btn { padding: 9px 9px; font-size: 9px; letter-spacing: 0.04em; }
+}
+
+/* 13 Oct 2026: the smallest phones (320 px) cannot fit four things. The Discord logo goes
+   first — it is in the wishlist band, the bug box and the footer; the Wishlist and the
+   press kit (David, 17 Sept) stay. */
+@media (max-width: 350px) {
+  .nav .nav-discord { display: none; }
+  .nav { gap: 4px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
