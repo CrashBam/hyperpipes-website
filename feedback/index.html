@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HyperPipes — Feedback</title>
+<meta name="description" content="Tell us what you think of HyperPipes. One question, no account. It goes straight to the developer.">
+<meta name="theme-color" content="#000208">
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="../assets/img/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/icon.svg">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar stuck">
+  <div class="shell">
+    <a class="brand" href="../">
+      <img src="../assets/img/icon.svg" alt="">
+      <b>HyperPipes</b>
+    </a>
+    <nav class="nav">
+      <a href="../#features">Features</a>
+      <a href="../manual/">Manuals</a>
+      <a class="btn btn-primary" href="../report/">Report a bug</a>
+    </nav>
+  </div>
+</header>
+
+<main class="subpage prose">
+  <div class="shell shell-narrow">
+
+    <p class="crumb"><a href="../">Home</a> &rsaquo; Feedback</p>
+    <h1 class="section-title">Tell us what you think</h1>
+
+    <div class="callout">
+      <p><b>One question. No account.</b> Your answer goes straight to the
+      developer. One person reads all of them, so short and plain is perfect.</p>
+    </div>
+
+    <!-- ==================================================================
+         THE FEEDBACK FORM (26 Oct 2026)
+
+         The game's FEEDBACK button (demo main menu footer, and the end-of-demo
+         screen) opens this page. Steam tells us HOW LONG people play — the
+         demo's median is 5 minutes — but never WHY they stop. This asks that.
+
+         Same Formspree form as /report (FORM_ID below), so it costs nothing
+         new and lands in the same inbox; the subject line starts "HyperPipes
+         feedback" so the two are easy to tell apart. If these emails ever get
+         too many, the game's FeedbackLink.PageUrl can point somewhere else.
+
+         The game adds ?build=&v=&os=&from=&races= to the address. Those go in
+         hidden fields, so every email says which build, version and system,
+         which button, and how many demo races were finished — with nothing
+         for the player to type. Opened from a browser by hand, they are blank.
+         ================================================================== -->
+
+    <form id="feedback" class="rform" novalidate>
+
+      <div class="field">
+        <label for="why">What made you stop playing?<span class="req">required</span></label>
+        <select id="why" name="Why they stopped" required>
+          <option value="" selected disabled>Pick one</option>
+          <option value="I did not stop — I played it all">I did not stop — I played it all</option>
+          <option value="It was too hard to stay on the pipe">It was too hard to stay on the pipe</option>
+          <option value="I did not know what to do">I did not know what to do</option>
+          <option value="The tutorial was too long">The tutorial was too long</option>
+          <option value="It ran slow, or it crashed">It ran slow, or it crashed</option>
+          <option value="The controls felt wrong">The controls felt wrong</option>
+          <option value="It is not my type of game">It is not my type of game</option>
+          <option value="I only wanted a quick look">I only wanted a quick look</option>
+          <option value="Something else">Something else</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="more">Tell us more</label>
+        <p class="hint">Optional. What happened, in your own words.</p>
+        <textarea id="more" name="More" rows="5"
+                  placeholder="I kept falling off the side of the pipe on the second track…"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="liked">What did you like?</label>
+        <p class="hint">Optional.</p>
+        <textarea id="liked" name="Liked" rows="3"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="email">Your email</label>
+        <p class="hint">Optional. We use it only to reply to you.</p>
+        <input id="email" name="Reply to" type="email" autocomplete="email"
+               maxlength="120" placeholder="you@example.com">
+      </div>
+
+      <!-- Filled from the address the game opens; see the comment above. -->
+      <input type="hidden" name="Build"   id="f-build">
+      <input type="hidden" name="Version" id="f-version">
+      <input type="hidden" name="System"  id="f-os">
+      <input type="hidden" name="Button"  id="f-from">
+      <input type="hidden" name="Demo races finished" id="f-races">
+
+      <!-- Formspree's honeypot: bots fill it, people never see it. -->
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="gotcha">
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary" id="send">Send</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </div>
+
+    </form>
+
+    <div class="callout done" id="done" hidden>
+      <p><b>Thank you — that is in.</b> It went straight to the developer, and it
+      helps. You can close this page now.</p>
+      <p class="foot-note"><a href="https://store.steampowered.com/app/5009100/" target="_blank" rel="noopener">Wishlist HyperPipes on Steam</a> &middot;
+      <a href="../">Home page</a></p>
+    </div>
+
+    <p class="foot-note">Found a bug? Use the <a href="../report/">bug form</a> —
+    it asks for the details that help us fix it.</p>
+
+    <p class="foot-note">Nothing on this page is tracked or stored in your
+    browser. What you type is sent once, when you press Send, and nowhere else.
+    See the <a href="../privacy/">privacy policy</a>.</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="shell">
+    <p>&copy; <span id="year">2026</span> CrashBamBoom &middot; HyperPipes &middot; Made with Godot</p>
+    <nav class="fnav">
+      <a href="../">Home</a>
+      <a href="../manual/">Manuals</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="../report/">Report a bug</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* The same Formspree form as /report — see the note at the top of the form. */
+const FORM_ID = "mqpkyjaa";
+
+const form   = document.getElementById("feedback");
+const send   = document.getElementById("send");
+const status = document.getElementById("status");
+const done   = document.getElementById("done");
+const why    = document.getElementById("why");
+
+/* What the game put on the address. Each value is cut short and kept to plain
+   characters: it is only a label in an email, but nothing from a URL should
+   go anywhere unchecked. */
+const params = new URLSearchParams(location.search);
+function param(name) {
+  return (params.get(name) || "").replace(/[^A-Za-z0-9 ._-]/g, "").slice(0, 24);
+}
+document.getElementById("f-build").value   = param("build");
+document.getElementById("f-version").value = param("v");
+document.getElementById("f-os").value      = param("os");
+document.getElementById("f-from").value    = param("from");
+document.getElementById("f-races").value   = param("races");
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  if (!why.value) {
+    status.textContent = "Please pick an answer first.";
+    status.className = "status bad";
+    why.focus();
+    return;
+  }
+
+  send.disabled = true;
+  status.textContent = "Sending…";
+  status.className = "status";
+
+  const data = new FormData(form);
+  const build = param("build") ? ` (${param("build")})` : "";
+  data.set("_subject", `HyperPipes feedback${build} — ${why.value}`);
+
+  try {
+    const reply = await fetch(`https://formspree.io/f/${FORM_ID}`, {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" }
+    });
+    if (!reply.ok) throw new Error(String(reply.status));
+    form.hidden = true;
+    done.hidden = false;
+    done.scrollIntoView({ behavior: "smooth", block: "center" });
+  } catch (error) {
+    /* Never lose the answer: the words stay in the boxes. */
+    send.disabled = false;
+    status.textContent = "That did not send. Your words are still here — please try again in a moment.";
+    status.className = "status bad";
+  }
+});
+</script>
+</body>
+</html>
